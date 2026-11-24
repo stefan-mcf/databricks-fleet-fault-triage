@@ -44,7 +44,7 @@ The selected recipe and threshold were frozen before the external test was evalu
 
 These denominators matter. The recall, precision and average precision describe scored records; they do not assign outcomes to the 128 abstentions. The exact-feature overlap check found no cross-file overlaps among the 15,872 scored test records. The 128 abstentions were not included in that overlap check. Unknown vehicle and time relationships still limit generalisation.
 
-Of 656 records flagged for APS review, 310 carried another recorded component-fault label. That review burden is visible alongside high recall. Neither a high aggregate score nor the benchmark's error weights establish operational value in a real fleet.
+Of 656 records flagged for APS review, 310 carried another recorded component-fault label. That review burden is visible alongside high recall in [benchmark.png](../assets/benchmark.png) and [review-tradeoff.png](../assets/review-tradeoff.png), and is discussed in [the case study](case-study.md#measured-external-benchmark-and-review-tradeoff). Neither a high aggregate score nor the benchmark's error weights establish operational value in a real fleet.
 
 ## Reproduction and evidence scope
 
