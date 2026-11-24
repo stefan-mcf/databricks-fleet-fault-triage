@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this repository when referring to the case study."
+type: software
+title: "Fleet Fault Triage: Databricks ML Delivery"
+authors:
+  - family-names: McFeeters
+    given-names: Stefan
+version: 1.0.0
+date-released: 2026-11-24
+repository-code: "https://github.com/stefan-mcf/databricks-fleet-fault-triage"

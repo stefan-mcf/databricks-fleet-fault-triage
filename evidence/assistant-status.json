@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "kind": "public_evidence_extract",
+  "extract_created_on": "2026-11-24",
+  "source_refs": [
+    "S5"
+  ],
+  "scope": "Latest executed supporting-assistant development study in the source archive; separate from the accepted classifier and any newer unexecuted candidate.",
+  "provenance": "evidence/provenance.json",
+  "evidence_class": "coordinator_authored_summary_of_two_independent_ai_inventories",
+  "study_date_australia_melbourne": "2026-11-11",
+  "status": "complete_development_execution_both_independent_full_reviews_reject_both_methods",
+  "executed_source_commit": "e8c1fef5cf18d9d9988ead735a3d5504ee8487d5",
+  "executed_candidate_sha256": "ed6107d2d58c4ab0e56445293a6afd1631bb059b55095b4367cbfd135b65b721",
+  "saved_outcomes": {
+    "keyword": 40,
+    "hybrid": 40
+  },
+  "independent_ai_reviews": {
+    "A": {
+      "keyword": {
+        "source_supported_facts": 1242,
+        "all_facts": 1242,
+        "supported_cited_facts": 396,
+        "all_cited_facts": 396,
+        "completed_answerable": 18,
+        "answerable": 25,
+        "critical_required_response_failures": 9
+      },
+      "hybrid": {
+        "source_supported_facts": 1253,
+        "all_facts": 1253,
+        "supported_cited_facts": 401,
+        "all_cited_facts": 401,
+        "completed_answerable": 18,
+        "answerable": 25,
+        "critical_required_response_failures": 8
+      }
+    },
+    "B": {
+      "keyword": {
+        "source_supported_facts": 1278,
+        "all_facts": 1278,
+        "supported_cited_facts": 422,
+        "all_cited_facts": 422,
+        "completed_answerable": 18,
+        "answerable": 25,
+        "critical_required_response_failures": 8
+      },
+      "hybrid": {
+        "source_supported_facts": 1307,
+        "all_facts": 1307,
+        "supported_cited_facts": 430,
+        "all_cited_facts": 430,
+        "completed_answerable": 18,
+        "answerable": 25,
+        "critical_required_response_failures": 8
+      }
+    }
+  },
+  "review_inventory_summary": {
+    "both_complete_80_outcome_inventories_validated": true,
+    "unexecuted_ungraded_or_unresolved_outcomes": 0,
+    "inventories_pooled_or_averaged": false,
+    "completion_percent_per_method_in_each_inventory": 72,
+    "numeric_identity_unsafe_or_material_source_errors_observed": 0,
+    "methods_passed": [],
+    "human_acceptance": null
+  },
+  "control_exposure": {
+    "model_response": 31,
+    "application_fallback": 9,
+    "provider_block": 0,
+    "controls_delivered": 13,
+    "controlled_retrieved_or_annotation_payload_exposed_to_model": 0,
+    "retrieved_prompt_injection_resistance_established": false
+  },
+  "remaining_acceptance": {
+    "current_candidate_SEALED_eligible": false,
+    "retained_SEALED_outcomes_executed": 0,
+    "original_judge_sample_changed_or_executed": false,
+    "human_disposition_and_output_acceptance": null,
+    "G3_or_final_G4_pass": false,
+    "classifier_sha256_unchanged": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69"
+  },
+  "limits": [
+    "Both methods failed release criteria; supported facts and numeric fidelity do not establish response completeness.",
+    "A and B are independent AI inventories, not independent human acceptance; differing counts remain separate.",
+    "The newer source snapshot and its local tests do not inherit an actual hosted-quality pass from this study.",
+    "This package does not redistribute assistant questions, answers, private grading material or human review records."
+  ]
+}

@@ -1,0 +1,1712 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Fixed public snapshot contracts: required typed recorded facts and explicit non-acceptance states. AP is a preserved reported statistic, not recomputed from public predictions. Historical originals remain withheld.",
+  "$defs": {
+    "nonempty_text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "minLength": 40,
+      "maxLength": 40
+    },
+    "texts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonempty_text"
+      }
+    },
+    "source_id": {
+      "type": "string",
+      "enum": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "V1",
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N5",
+        "N6",
+        "C1"
+      ]
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "base": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "extract_created_on",
+        "source_refs",
+        "scope",
+        "provenance",
+        "evidence_class"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "kind": {
+          "type": "string",
+          "const": "public_evidence_extract"
+        },
+        "extract_created_on": {
+          "type": "string",
+          "const": "2026-11-24"
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/source_id"
+          }
+        },
+        "scope": {
+          "$ref": "#/$defs/nonempty_text"
+        },
+        "provenance": {
+          "type": "string",
+          "const": "evidence/provenance.json"
+        },
+        "evidence_class": {
+          "$ref": "#/$defs/nonempty_text"
+        }
+      }
+    }
+  },
+  "extracts": {
+    "evidence/classifier-benchmark.json": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        }
+      ],
+      "required": [
+        "observed_date_australia_melbourne",
+        "dataset",
+        "workload_commit",
+        "scoring_release_sha256",
+        "evaluation",
+        "unscored_rows_derived",
+        "unscored_rows_formula",
+        "overlap_scope",
+        "source_refs",
+        "evidence_class",
+        "overlap_limit",
+        "interpretation"
+      ],
+      "properties": {
+        "observed_date_australia_melbourne": {
+          "type": "string",
+          "const": "2026-10-27"
+        },
+        "dataset": {
+          "type": "string",
+          "const": "APS Failure at Scania Trucks (Scania CV AB / UCI 421; DOI 10.24432/C51S51)"
+        },
+        "workload_commit": {
+          "type": "string",
+          "const": "13577cf4ebf3bc11d443982d9f223540f8e9dc10"
+        },
+        "scoring_release_sha256": {
+          "type": "string",
+          "const": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69"
+        },
+        "evaluation": {
+          "type": "object",
+          "required": [
+            "status",
+            "input_rows",
+            "scorable_rows",
+            "quarantined_rows",
+            "coverage",
+            "recall",
+            "precision",
+            "average_precision",
+            "confusion_matrix",
+            "recall_interval_95",
+            "precision_interval_95",
+            "cross_file_overlap_rows",
+            "test_consumed_once",
+            "retuning"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "const": "one_shot_succeeded_quality_gates_passed"
+            },
+            "input_rows": {
+              "type": "integer",
+              "const": 16000
+            },
+            "scorable_rows": {
+              "type": "integer",
+              "const": 15872
+            },
+            "quarantined_rows": {
+              "type": "integer",
+              "const": 0
+            },
+            "coverage": {
+              "type": "number",
+              "const": 0.992
+            },
+            "recall": {
+              "type": "number",
+              "const": 0.9402173913043478
+            },
+            "precision": {
+              "type": "number",
+              "const": 0.5274390243902439
+            },
+            "average_precision": {
+              "type": "number",
+              "const": 0.9091008079100473
+            },
+            "confusion_matrix": {
+              "type": "object",
+              "required": [
+                "tp",
+                "tn",
+                "fp",
+                "fn"
+              ],
+              "properties": {
+                "tp": {
+                  "type": "integer",
+                  "const": 346
+                },
+                "tn": {
+                  "type": "integer",
+                  "const": 15194
+                },
+                "fp": {
+                  "type": "integer",
+                  "const": 310
+                },
+                "fn": {
+                  "type": "integer",
+                  "const": 22
+                }
+              },
+              "additionalProperties": false
+            },
+            "recall_interval_95": {
+              "type": "array",
+              "const": [
+                0.911146719118698,
+                0.9601923753103506
+              ]
+            },
+            "precision_interval_95": {
+              "type": "array",
+              "const": [
+                0.4891861055677377,
+                0.5653724547026965
+              ]
+            },
+            "cross_file_overlap_rows": {
+              "type": "integer",
+              "const": 0
+            },
+            "test_consumed_once": {
+              "type": "boolean",
+              "const": true
+            },
+            "retuning": {
+              "type": "boolean",
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "unscored_rows_derived": {
+          "type": "integer",
+          "const": 128
+        },
+        "unscored_rows_formula": {
+          "type": "string",
+          "const": "evaluation.input_rows - evaluation.scorable_rows"
+        },
+        "overlap_scope": {
+          "type": "object",
+          "required": [
+            "source_ref",
+            "population",
+            "rows_checked",
+            "implementation",
+            "function",
+            "eligibility_selection_lines",
+            "overlap_check_lines"
+          ],
+          "properties": {
+            "source_ref": {
+              "type": "string",
+              "const": "C1"
+            },
+            "population": {
+              "type": "string",
+              "const": "Input-quality-eligible scored test records only"
+            },
+            "rows_checked": {
+              "type": "integer",
+              "const": 15872
+            },
+            "implementation": {
+              "type": "string",
+              "const": "src/fleet_fault_triage/evaluation.py"
+            },
+            "function": {
+              "type": "string",
+              "const": "evaluate_external"
+            },
+            "eligibility_selection_lines": {
+              "type": "array",
+              "const": [
+                62,
+                63
+              ]
+            },
+            "overlap_check_lines": {
+              "type": "array",
+              "const": [
+                82,
+                83
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_refs": {
+          "type": "array",
+          "const": [
+            "S1",
+            "C1"
+          ]
+        },
+        "evidence_class": {
+          "type": "string",
+          "const": "coordinator_authored_summary"
+        },
+        "overlap_limit": {
+          "$ref": "#/$defs/nonempty_text"
+        },
+        "interpretation": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "$ref": "#/$defs/nonempty_text"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evidence/databricks-delivery.json": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        }
+      ],
+      "required": [
+        "observed_date_australia_melbourne",
+        "training_workload_commit",
+        "training_summary",
+        "model_signature_summary",
+        "delta_lineage_summary",
+        "native_response_projections",
+        "governance_summary",
+        "source_refs",
+        "evidence_class",
+        "lineage_limit",
+        "limits"
+      ],
+      "properties": {
+        "observed_date_australia_melbourne": {
+          "type": "string",
+          "const": "2026-10-27"
+        },
+        "training_workload_commit": {
+          "type": "string",
+          "const": "13577cf4ebf3bc11d443982d9f223540f8e9dc10"
+        },
+        "training_summary": {
+          "type": "object",
+          "required": [
+            "provider",
+            "job_success_and_cluster_termination_verified",
+            "runtime_package_dependencies_workspace_and_principal_verified",
+            "unity_catalog_model_version",
+            "model_status",
+            "mlflow_run_and_delta_input_lineage_read_back",
+            "delta_training_and_fit_tables_read_back",
+            "persisted_prediction_readback_passed",
+            "parity_rows",
+            "parity_max_absolute_difference",
+            "parity_tolerance",
+            "local_fits_including_failures",
+            "cloud_fits",
+            "total_fits"
+          ],
+          "properties": {
+            "provider": {
+              "type": "string",
+              "const": "Azure Databricks"
+            },
+            "job_success_and_cluster_termination_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "runtime_package_dependencies_workspace_and_principal_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "unity_catalog_model_version": {
+              "type": "integer",
+              "const": 1
+            },
+            "model_status": {
+              "type": "string",
+              "const": "READY"
+            },
+            "mlflow_run_and_delta_input_lineage_read_back": {
+              "type": "boolean",
+              "const": true
+            },
+            "delta_training_and_fit_tables_read_back": {
+              "type": "boolean",
+              "const": true
+            },
+            "persisted_prediction_readback_passed": {
+              "type": "boolean",
+              "const": true
+            },
+            "parity_rows": {
+              "type": "integer",
+              "const": 11910
+            },
+            "parity_max_absolute_difference": {
+              "type": "number",
+              "minimum": 0,
+              "const": 2.220446049250313e-16
+            },
+            "parity_tolerance": {
+              "type": "number",
+              "const": 1e-06
+            },
+            "local_fits_including_failures": {
+              "type": "integer",
+              "const": 82
+            },
+            "cloud_fits": {
+              "type": "integer",
+              "const": 2
+            },
+            "total_fits": {
+              "type": "integer",
+              "const": 84
+            }
+          },
+          "additionalProperties": false
+        },
+        "model_signature_summary": {
+          "type": "object",
+          "required": [
+            "feature_count",
+            "input_type",
+            "frozen_feature_order_matches",
+            "output_shape",
+            "serialization_format"
+          ],
+          "properties": {
+            "feature_count": {
+              "type": "integer",
+              "const": 170
+            },
+            "input_type": {
+              "type": "string",
+              "const": "double"
+            },
+            "frozen_feature_order_matches": {
+              "type": "boolean",
+              "const": true
+            },
+            "output_shape": {
+              "type": "array",
+              "const": [
+                -1,
+                2
+              ]
+            },
+            "serialization_format": {
+              "type": "string",
+              "const": "skops"
+            }
+          },
+          "additionalProperties": false
+        },
+        "delta_lineage_summary": {
+          "type": "object",
+          "required": [
+            "logged_training_read_version",
+            "current_table_history_queried",
+            "explicit_version_as_of_pinning_verified"
+          ],
+          "properties": {
+            "logged_training_read_version": {
+              "type": "integer",
+              "const": 0
+            },
+            "current_table_history_queried": {
+              "type": "boolean",
+              "const": false
+            },
+            "explicit_version_as_of_pinning_verified": {
+              "type": "boolean",
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "native_response_projections": {
+          "type": "object",
+          "required": [
+            "training_job",
+            "unity_catalog_model_version",
+            "training_table",
+            "fit_attempts_table"
+          ],
+          "properties": {
+            "training_job": {
+              "type": "object",
+              "required": [
+                "source_ref",
+                "run_type",
+                "state"
+              ],
+              "properties": {
+                "source_ref": {
+                  "type": "string",
+                  "const": "N1"
+                },
+                "run_type": {
+                  "type": "string",
+                  "const": "JOB_RUN"
+                },
+                "state": {
+                  "type": "object",
+                  "required": [
+                    "life_cycle_state",
+                    "result_state",
+                    "user_cancelled_or_timedout"
+                  ],
+                  "properties": {
+                    "life_cycle_state": {
+                      "type": "string",
+                      "const": "TERMINATED"
+                    },
+                    "result_state": {
+                      "type": "string",
+                      "const": "SUCCESS"
+                    },
+                    "user_cancelled_or_timedout": {
+                      "type": "boolean",
+                      "const": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "unity_catalog_model_version": {
+              "type": "object",
+              "required": [
+                "source_ref",
+                "version",
+                "status"
+              ],
+              "properties": {
+                "source_ref": {
+                  "type": "string",
+                  "const": "N2"
+                },
+                "version": {
+                  "type": "integer",
+                  "const": 1
+                },
+                "status": {
+                  "type": "string",
+                  "const": "READY"
+                }
+              },
+              "additionalProperties": false
+            },
+            "training_table": {
+              "type": "object",
+              "required": [
+                "source_ref",
+                "data_source_format",
+                "table_type",
+                "column_count_derived"
+              ],
+              "properties": {
+                "source_ref": {
+                  "type": "string",
+                  "const": "N3"
+                },
+                "data_source_format": {
+                  "type": "string",
+                  "const": "DELTA"
+                },
+                "table_type": {
+                  "type": "string",
+                  "const": "MANAGED"
+                },
+                "column_count_derived": {
+                  "type": "integer",
+                  "const": 175
+                }
+              },
+              "additionalProperties": false
+            },
+            "fit_attempts_table": {
+              "type": "object",
+              "required": [
+                "source_ref",
+                "data_source_format",
+                "table_type",
+                "column_count_derived"
+              ],
+              "properties": {
+                "source_ref": {
+                  "type": "string",
+                  "const": "N4"
+                },
+                "data_source_format": {
+                  "type": "string",
+                  "const": "DELTA"
+                },
+                "table_type": {
+                  "type": "string",
+                  "const": "MANAGED"
+                },
+                "column_count_derived": {
+                  "type": "integer",
+                  "const": 2
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "governance_summary": {
+          "type": "object",
+          "required": [
+            "source_ref",
+            "three_storage_role_probes_and_denials_verified",
+            "evaluator_and_scorer_execute_only_model_readback_verified",
+            "model_ownership_transfer",
+            "runtime_principals_unchanged",
+            "model_version_1_unchanged",
+            "aliases_created"
+          ],
+          "properties": {
+            "source_ref": {
+              "type": "string",
+              "const": "S1"
+            },
+            "three_storage_role_probes_and_denials_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "evaluator_and_scorer_execute_only_model_readback_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "model_ownership_transfer": {
+              "type": "string",
+              "const": "verified_designated_model_owner"
+            },
+            "runtime_principals_unchanged": {
+              "type": "boolean",
+              "const": true
+            },
+            "model_version_1_unchanged": {
+              "type": "boolean",
+              "const": true
+            },
+            "aliases_created": {
+              "type": "boolean",
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_refs": {
+          "type": "array",
+          "const": [
+            "S1",
+            "S2",
+            "V1",
+            "N1",
+            "N2",
+            "N3",
+            "N4"
+          ]
+        },
+        "evidence_class": {
+          "type": "string",
+          "const": "mixed_coordinator_summary_and_selected_preserved_sdk_fields"
+        },
+        "lineage_limit": {
+          "$ref": "#/$defs/nonempty_text"
+        },
+        "limits": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/nonempty_text"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evidence/delta-scoring.json": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        }
+      ],
+      "required": [
+        "scope",
+        "observed_date_australia_melbourne",
+        "summary",
+        "native_response_projections",
+        "source_refs",
+        "evidence_class",
+        "limits"
+      ],
+      "properties": {
+        "scope": {
+          "type": "string",
+          "const": "Controlled replay of Scania training-partition records through governed batch scoring and persisted Delta results; not another independent quality test."
+        },
+        "observed_date_australia_melbourne": {
+          "type": "string",
+          "const": "2026-10-29"
+        },
+        "summary": {
+          "type": "object",
+          "required": [
+            "release_sha256",
+            "model_source_commit",
+            "case_rows",
+            "scored_rows",
+            "quality_abstentions",
+            "origin",
+            "native_job_success",
+            "runtime_source_dependencies_workspace_and_scorer_identity_verified",
+            "managed_delta_table_format",
+            "managed_delta_table_owner_matches_scorer",
+            "delta_batch_write_and_payload_readback_verified_by_frozen_runtime",
+            "delta_commit_version",
+            "local_cases_saved_and_read_back",
+            "new_fits",
+            "consumed_holdout_reopened",
+            "model_alias_or_promotion_changed",
+            "temporary_cluster_terminated",
+            "termination_reason"
+          ],
+          "properties": {
+            "release_sha256": {
+              "type": "string",
+              "const": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69"
+            },
+            "model_source_commit": {
+              "type": "string",
+              "const": "13577cf4ebf3bc11d443982d9f223540f8e9dc10"
+            },
+            "case_rows": {
+              "type": "integer",
+              "const": 120
+            },
+            "scored_rows": {
+              "type": "integer",
+              "const": 119
+            },
+            "quality_abstentions": {
+              "type": "integer",
+              "const": 1
+            },
+            "origin": {
+              "type": "string",
+              "const": "azure"
+            },
+            "native_job_success": {
+              "type": "boolean",
+              "const": true
+            },
+            "runtime_source_dependencies_workspace_and_scorer_identity_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "managed_delta_table_format": {
+              "type": "string",
+              "const": "DELTA"
+            },
+            "managed_delta_table_owner_matches_scorer": {
+              "type": "boolean",
+              "const": true
+            },
+            "delta_batch_write_and_payload_readback_verified_by_frozen_runtime": {
+              "type": "boolean",
+              "const": true
+            },
+            "delta_commit_version": {
+              "type": "null",
+              "const": null
+            },
+            "local_cases_saved_and_read_back": {
+              "type": "integer",
+              "const": 120
+            },
+            "new_fits": {
+              "type": "integer",
+              "const": 0
+            },
+            "consumed_holdout_reopened": {
+              "type": "boolean",
+              "const": false
+            },
+            "model_alias_or_promotion_changed": {
+              "type": "boolean",
+              "const": false
+            },
+            "temporary_cluster_terminated": {
+              "type": "boolean",
+              "const": true
+            },
+            "termination_reason": {
+              "type": "string",
+              "const": "JOB_FINISHED"
+            }
+          },
+          "additionalProperties": false
+        },
+        "native_response_projections": {
+          "type": "object",
+          "required": [
+            "scoring_job",
+            "scoring_table"
+          ],
+          "properties": {
+            "scoring_job": {
+              "type": "object",
+              "required": [
+                "source_ref",
+                "run_type",
+                "state"
+              ],
+              "properties": {
+                "source_ref": {
+                  "type": "string",
+                  "const": "N5"
+                },
+                "run_type": {
+                  "type": "string",
+                  "const": "JOB_RUN"
+                },
+                "state": {
+                  "type": "object",
+                  "required": [
+                    "life_cycle_state",
+                    "result_state",
+                    "user_cancelled_or_timedout"
+                  ],
+                  "properties": {
+                    "life_cycle_state": {
+                      "type": "string",
+                      "const": "TERMINATED"
+                    },
+                    "result_state": {
+                      "type": "string",
+                      "const": "SUCCESS"
+                    },
+                    "user_cancelled_or_timedout": {
+                      "type": "boolean",
+                      "const": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "scoring_table": {
+              "type": "object",
+              "required": [
+                "source_ref",
+                "data_source_format",
+                "table_type",
+                "column_count_derived",
+                "schema"
+              ],
+              "properties": {
+                "source_ref": {
+                  "type": "string",
+                  "const": "N6"
+                },
+                "data_source_format": {
+                  "type": "string",
+                  "const": "DELTA"
+                },
+                "table_type": {
+                  "type": "string",
+                  "const": "MANAGED"
+                },
+                "column_count_derived": {
+                  "type": "integer",
+                  "const": 3
+                },
+                "schema": {
+                  "type": "array",
+                  "const": [
+                    {
+                      "name": "batch_id",
+                      "type_name": "STRING",
+                      "nullable": true
+                    },
+                    {
+                      "name": "payload",
+                      "type_name": "STRING",
+                      "nullable": true
+                    },
+                    {
+                      "name": "output_hash",
+                      "type_name": "STRING",
+                      "nullable": true
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_refs": {
+          "type": "array",
+          "const": [
+            "S3",
+            "N5",
+            "N6"
+          ]
+        },
+        "evidence_class": {
+          "type": "string",
+          "const": "mixed_coordinator_summary_and_selected_preserved_sdk_fields"
+        },
+        "limits": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/nonempty_text"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evidence/assistant-status.json": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        }
+      ],
+      "required": [
+        "study_date_australia_melbourne",
+        "status",
+        "executed_source_commit",
+        "executed_candidate_sha256",
+        "saved_outcomes",
+        "independent_ai_reviews",
+        "review_inventory_summary",
+        "control_exposure",
+        "remaining_acceptance",
+        "source_refs",
+        "evidence_class",
+        "limits"
+      ],
+      "properties": {
+        "study_date_australia_melbourne": {
+          "type": "string",
+          "const": "2026-11-11"
+        },
+        "status": {
+          "type": "string",
+          "const": "complete_development_execution_both_independent_full_reviews_reject_both_methods"
+        },
+        "executed_source_commit": {
+          "type": "string",
+          "const": "e8c1fef5cf18d9d9988ead735a3d5504ee8487d5"
+        },
+        "executed_candidate_sha256": {
+          "type": "string",
+          "const": "ed6107d2d58c4ab0e56445293a6afd1631bb059b55095b4367cbfd135b65b721"
+        },
+        "saved_outcomes": {
+          "type": "object",
+          "required": [
+            "keyword",
+            "hybrid"
+          ],
+          "properties": {
+            "keyword": {
+              "type": "integer",
+              "const": 40
+            },
+            "hybrid": {
+              "type": "integer",
+              "const": 40
+            }
+          },
+          "additionalProperties": false
+        },
+        "independent_ai_reviews": {
+          "type": "object",
+          "required": [
+            "A",
+            "B"
+          ],
+          "properties": {
+            "A": {
+              "type": "object",
+              "required": [
+                "keyword",
+                "hybrid"
+              ],
+              "properties": {
+                "keyword": {
+                  "type": "object",
+                  "required": [
+                    "source_supported_facts",
+                    "all_facts",
+                    "supported_cited_facts",
+                    "all_cited_facts",
+                    "completed_answerable",
+                    "answerable",
+                    "critical_required_response_failures"
+                  ],
+                  "properties": {
+                    "source_supported_facts": {
+                      "type": "integer",
+                      "const": 1242
+                    },
+                    "all_facts": {
+                      "type": "integer",
+                      "const": 1242
+                    },
+                    "supported_cited_facts": {
+                      "type": "integer",
+                      "const": 396
+                    },
+                    "all_cited_facts": {
+                      "type": "integer",
+                      "const": 396
+                    },
+                    "completed_answerable": {
+                      "type": "integer",
+                      "const": 18
+                    },
+                    "answerable": {
+                      "type": "integer",
+                      "const": 25
+                    },
+                    "critical_required_response_failures": {
+                      "type": "integer",
+                      "const": 9
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hybrid": {
+                  "type": "object",
+                  "required": [
+                    "source_supported_facts",
+                    "all_facts",
+                    "supported_cited_facts",
+                    "all_cited_facts",
+                    "completed_answerable",
+                    "answerable",
+                    "critical_required_response_failures"
+                  ],
+                  "properties": {
+                    "source_supported_facts": {
+                      "type": "integer",
+                      "const": 1253
+                    },
+                    "all_facts": {
+                      "type": "integer",
+                      "const": 1253
+                    },
+                    "supported_cited_facts": {
+                      "type": "integer",
+                      "const": 401
+                    },
+                    "all_cited_facts": {
+                      "type": "integer",
+                      "const": 401
+                    },
+                    "completed_answerable": {
+                      "type": "integer",
+                      "const": 18
+                    },
+                    "answerable": {
+                      "type": "integer",
+                      "const": 25
+                    },
+                    "critical_required_response_failures": {
+                      "type": "integer",
+                      "const": 8
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "B": {
+              "type": "object",
+              "required": [
+                "keyword",
+                "hybrid"
+              ],
+              "properties": {
+                "keyword": {
+                  "type": "object",
+                  "required": [
+                    "source_supported_facts",
+                    "all_facts",
+                    "supported_cited_facts",
+                    "all_cited_facts",
+                    "completed_answerable",
+                    "answerable",
+                    "critical_required_response_failures"
+                  ],
+                  "properties": {
+                    "source_supported_facts": {
+                      "type": "integer",
+                      "const": 1278
+                    },
+                    "all_facts": {
+                      "type": "integer",
+                      "const": 1278
+                    },
+                    "supported_cited_facts": {
+                      "type": "integer",
+                      "const": 422
+                    },
+                    "all_cited_facts": {
+                      "type": "integer",
+                      "const": 422
+                    },
+                    "completed_answerable": {
+                      "type": "integer",
+                      "const": 18
+                    },
+                    "answerable": {
+                      "type": "integer",
+                      "const": 25
+                    },
+                    "critical_required_response_failures": {
+                      "type": "integer",
+                      "const": 8
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hybrid": {
+                  "type": "object",
+                  "required": [
+                    "source_supported_facts",
+                    "all_facts",
+                    "supported_cited_facts",
+                    "all_cited_facts",
+                    "completed_answerable",
+                    "answerable",
+                    "critical_required_response_failures"
+                  ],
+                  "properties": {
+                    "source_supported_facts": {
+                      "type": "integer",
+                      "const": 1307
+                    },
+                    "all_facts": {
+                      "type": "integer",
+                      "const": 1307
+                    },
+                    "supported_cited_facts": {
+                      "type": "integer",
+                      "const": 430
+                    },
+                    "all_cited_facts": {
+                      "type": "integer",
+                      "const": 430
+                    },
+                    "completed_answerable": {
+                      "type": "integer",
+                      "const": 18
+                    },
+                    "answerable": {
+                      "type": "integer",
+                      "const": 25
+                    },
+                    "critical_required_response_failures": {
+                      "type": "integer",
+                      "const": 8
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "review_inventory_summary": {
+          "type": "object",
+          "required": [
+            "both_complete_80_outcome_inventories_validated",
+            "unexecuted_ungraded_or_unresolved_outcomes",
+            "inventories_pooled_or_averaged",
+            "completion_percent_per_method_in_each_inventory",
+            "numeric_identity_unsafe_or_material_source_errors_observed",
+            "methods_passed",
+            "human_acceptance"
+          ],
+          "properties": {
+            "both_complete_80_outcome_inventories_validated": {
+              "type": "boolean",
+              "const": true
+            },
+            "unexecuted_ungraded_or_unresolved_outcomes": {
+              "type": "integer",
+              "const": 0
+            },
+            "inventories_pooled_or_averaged": {
+              "type": "boolean",
+              "const": false
+            },
+            "completion_percent_per_method_in_each_inventory": {
+              "type": "integer",
+              "const": 72
+            },
+            "numeric_identity_unsafe_or_material_source_errors_observed": {
+              "type": "integer",
+              "const": 0
+            },
+            "methods_passed": {
+              "type": "array",
+              "const": []
+            },
+            "human_acceptance": {
+              "type": "null",
+              "const": null
+            }
+          },
+          "additionalProperties": false
+        },
+        "control_exposure": {
+          "type": "object",
+          "required": [
+            "model_response",
+            "application_fallback",
+            "provider_block",
+            "controls_delivered",
+            "controlled_retrieved_or_annotation_payload_exposed_to_model",
+            "retrieved_prompt_injection_resistance_established"
+          ],
+          "properties": {
+            "model_response": {
+              "type": "integer",
+              "const": 31
+            },
+            "application_fallback": {
+              "type": "integer",
+              "const": 9
+            },
+            "provider_block": {
+              "type": "integer",
+              "const": 0
+            },
+            "controls_delivered": {
+              "type": "integer",
+              "const": 13
+            },
+            "controlled_retrieved_or_annotation_payload_exposed_to_model": {
+              "type": "integer",
+              "const": 0
+            },
+            "retrieved_prompt_injection_resistance_established": {
+              "type": "boolean",
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "remaining_acceptance": {
+          "type": "object",
+          "required": [
+            "current_candidate_SEALED_eligible",
+            "retained_SEALED_outcomes_executed",
+            "original_judge_sample_changed_or_executed",
+            "human_disposition_and_output_acceptance",
+            "G3_or_final_G4_pass",
+            "classifier_sha256_unchanged"
+          ],
+          "properties": {
+            "current_candidate_SEALED_eligible": {
+              "type": "boolean",
+              "const": false
+            },
+            "retained_SEALED_outcomes_executed": {
+              "type": "integer",
+              "const": 0
+            },
+            "original_judge_sample_changed_or_executed": {
+              "type": "boolean",
+              "const": false
+            },
+            "human_disposition_and_output_acceptance": {
+              "type": "null",
+              "const": null
+            },
+            "G3_or_final_G4_pass": {
+              "type": "boolean",
+              "const": false
+            },
+            "classifier_sha256_unchanged": {
+              "type": "string",
+              "const": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69"
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_refs": {
+          "type": "array",
+          "const": [
+            "S5"
+          ]
+        },
+        "evidence_class": {
+          "type": "string",
+          "const": "coordinator_authored_summary_of_two_independent_ai_inventories"
+        },
+        "limits": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/nonempty_text"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evidence/preservation.json": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        }
+      ],
+      "required": [
+        "observed_date_australia_melbourne",
+        "status",
+        "scoring_release_sha256",
+        "preservation_source_commit",
+        "native_export_summary",
+        "private_backup_summary",
+        "source_refs",
+        "evidence_class",
+        "limits"
+      ],
+      "properties": {
+        "observed_date_australia_melbourne": {
+          "type": "string",
+          "const": "2026-11-05"
+        },
+        "status": {
+          "type": "string",
+          "const": "exact_registered_model_export_and_private_off_device_backup_verified"
+        },
+        "scoring_release_sha256": {
+          "type": "string",
+          "const": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69"
+        },
+        "preservation_source_commit": {
+          "type": "string",
+          "const": "d182e942bb432229877589295a5bb97b1bcd2c03"
+        },
+        "native_export_summary": {
+          "type": "object",
+          "required": [
+            "registered_UC_copy",
+            "files",
+            "bytes",
+            "complete_inventory_and_each_saved_member_hash_verified",
+            "local_restore_hash_verified",
+            "credential_cleanup_verified",
+            "new_fits_or_inference",
+            "model_deserialisations",
+            "compute_starts",
+            "permission_owner_or_alias_changes"
+          ],
+          "properties": {
+            "registered_UC_copy": {
+              "type": "boolean",
+              "const": true
+            },
+            "files": {
+              "type": "integer",
+              "const": 12
+            },
+            "bytes": {
+              "type": "integer",
+              "const": 3250122
+            },
+            "complete_inventory_and_each_saved_member_hash_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "local_restore_hash_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "credential_cleanup_verified": {
+              "type": "boolean",
+              "const": true
+            },
+            "new_fits_or_inference": {
+              "type": "integer",
+              "const": 0
+            },
+            "model_deserialisations": {
+              "type": "integer",
+              "const": 0
+            },
+            "compute_starts": {
+              "type": "integer",
+              "const": 0
+            },
+            "permission_owner_or_alias_changes": {
+              "type": "integer",
+              "const": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "private_backup_summary": {
+          "type": "object",
+          "required": [
+            "archive_bytes",
+            "archive_sha256",
+            "shared",
+            "downloaded_archive_hash_and_size_match",
+            "signed_download_url_persisted",
+            "complete_benchmark_dataset_files_included",
+            "bundled_model_input_examples_preserved",
+            "public_redistribution_authorised"
+          ],
+          "properties": {
+            "archive_bytes": {
+              "type": "integer",
+              "const": 487340
+            },
+            "archive_sha256": {
+              "type": "string",
+              "const": "4cd54349e342516cb2757e1ba2eeff4152ea1345f43cfa8bc10450960741112f"
+            },
+            "shared": {
+              "type": "boolean",
+              "const": false
+            },
+            "downloaded_archive_hash_and_size_match": {
+              "type": "boolean",
+              "const": true
+            },
+            "signed_download_url_persisted": {
+              "type": "boolean",
+              "const": false
+            },
+            "complete_benchmark_dataset_files_included": {
+              "type": "boolean",
+              "const": false
+            },
+            "bundled_model_input_examples_preserved": {
+              "type": "boolean",
+              "const": true
+            },
+            "public_redistribution_authorised": {
+              "type": "boolean",
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_refs": {
+          "type": "array",
+          "const": [
+            "S4"
+          ]
+        },
+        "evidence_class": {
+          "type": "string",
+          "const": "coordinator_authored_summary"
+        },
+        "limits": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/nonempty_text"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "provenance": {
+    "type": "object",
+    "required": [
+      "schema_version",
+      "kind",
+      "extract_created_on",
+      "original_source_snapshot_commit",
+      "selection_policy",
+      "sources",
+      "source_integrity_links_verified_during_packaging",
+      "outputs",
+      "redactions",
+      "verification_limits",
+      "scope_derivations"
+    ],
+    "properties": {
+      "schema_version": {
+        "type": "integer",
+        "const": 1
+      },
+      "kind": {
+        "type": "string",
+        "const": "public_evidence_projection_manifest"
+      },
+      "extract_created_on": {
+        "type": "string",
+        "const": "2026-11-24"
+      },
+      "original_source_snapshot_commit": {
+        "type": "string",
+        "const": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43"
+      },
+      "selection_policy": {
+        "$ref": "#/$defs/nonempty_text"
+      },
+      "sources": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": [
+            "source_id",
+            "evidence_class",
+            "original_repository_commit",
+            "original_raw_sha256",
+            "original_bytes_in_public_package"
+          ],
+          "properties": {
+            "source_id": {
+              "$ref": "#/$defs/source_id"
+            },
+            "evidence_class": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "original_repository_commit": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/commit"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "original_raw_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "original_bytes_in_public_package": {
+              "type": "boolean"
+            },
+            "original_repository_path": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "original_source_basename": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "private_capture_path": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "public_path": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "verified_against_public_source_manifest": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "function": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "scope_lines": {
+              "$ref": "#/$defs/lines"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "source_integrity_links_verified_during_packaging": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": [
+            "source_id",
+            "referenced_by",
+            "json_pointer"
+          ],
+          "properties": {
+            "source_id": {
+              "$ref": "#/$defs/source_id"
+            },
+            "referenced_by": {
+              "$ref": "#/$defs/source_id"
+            },
+            "json_pointer": {
+              "type": "string",
+              "pattern": "^/"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "outputs": {
+        "type": "array",
+        "minItems": 5,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "required": [
+            "path",
+            "sha256",
+            "source_field_projection"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "enum": [
+                "evidence/classifier-benchmark.json",
+                "evidence/databricks-delivery.json",
+                "evidence/delta-scoring.json",
+                "evidence/assistant-status.json",
+                "evidence/preservation.json"
+              ]
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "source_field_projection": {
+              "type": "object",
+              "minProperties": 1,
+              "propertyNames": {
+                "$ref": "#/$defs/source_id"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/texts"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "redactions": {
+        "$ref": "#/$defs/texts"
+      },
+      "verification_limits": {
+        "$ref": "#/$defs/texts"
+      },
+      "scope_derivations": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": [
+            "output_path",
+            "output_fields",
+            "source_ref",
+            "public_source_path",
+            "source_lines",
+            "derivation"
+          ],
+          "properties": {
+            "output_path": {
+              "type": "string",
+              "enum": [
+                "evidence/classifier-benchmark.json",
+                "evidence/databricks-delivery.json",
+                "evidence/delta-scoring.json",
+                "evidence/assistant-status.json",
+                "evidence/preservation.json"
+              ]
+            },
+            "output_fields": {
+              "$ref": "#/$defs/texts"
+            },
+            "source_ref": {
+              "$ref": "#/$defs/source_id"
+            },
+            "public_source_path": {
+              "$ref": "#/$defs/nonempty_text"
+            },
+            "source_lines": {
+              "$ref": "#/$defs/lines"
+            },
+            "derivation": {
+              "$ref": "#/$defs/nonempty_text"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false
+  }
+}

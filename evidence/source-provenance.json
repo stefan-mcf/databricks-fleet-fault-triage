@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "kind": "curated_public_source_provenance",
+  "date": "2026-11-24",
+  "original_source_snapshot_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+  "copied_files": 53,
+  "byte_identical_files": 48,
+  "runtime_source_files": 22,
+  "runtime_source_files_byte_identical": true,
+  "dependency_only_modernization": {
+    "source_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+    "files": [
+      "resources/requirements-cloud.txt",
+      "uv.lock"
+    ],
+    "historical_lock_sha256": "4772ecdaba287f207bb9d3a6b2b4e8b328f4e01d6a546763f53d50d7ee11ac9c",
+    "current_lock_sha256": "574cc8e40df919ae0ea44e0a44f5c767ef03bfb9f0771b291058de6a644a2938",
+    "patch_changes": [
+      "oauthlib4.0.0 to4.0.1",
+      "pyasn1.6.4 to.6.5"
+    ],
+    "historical_execution_environment_claimed": false,
+    "pre_security_patch_lock_sha256": "405ff1f5daae811d503061f6a602cd921b49c1a62a1e1df5b402ccabf77df06a",
+    "current_cloud_requirements_sha256": "c2052669431e5989f3f4140f9110575f1d1903c067bd14c4df324ccaf5eb7269",
+    "packaging_security_patch_changes": [
+      {
+        "name": "opentelemetry-api",
+        "before": "1.45.1",
+        "after": "1.45.2"
+      },
+      {
+        "name": "opentelemetry-sdk",
+        "before": "1.45.1",
+        "after": "1.45.2"
+      },
+      {
+        "name": "opentelemetry-semantic-conventions",
+        "before": "0.66b1",
+        "after": "0.66b2"
+      }
+    ],
+    "security_advisory": "https://github.com/open-telemetry/opentelemetry-python/security/advisories/GHSA-mf5v-w3w3-f6cg",
+    "requirements_export_command": "uv export --locked --no-dev --no-emit-project --no-hashes --no-header --no-annotate --format requirements.txt -o resources/requirements-cloud.txt"
+  },
+  "public_package_changes": [
+    "Curated test selection omits historical authoring/export helper dependencies; omitted tests are not counted as passing.",
+    "One configuration example replaces an owner identity with a reserved example address.",
+    "The public operation example points to shipped documentation and declares the private execution runbook unavailable.",
+    "Registry SQL comments are self-contained and declare that the private executed ownership-transfer command is not included; executable SQL is unchanged.",
+    "README, case study, evidence projections, figures, publication checks, demo launcher, CI and packaging metadata are newly authored.",
+    "The historical scoring source is preserved verbatim; later compiled-assistant/financial-research modules are not shipped.",
+    "The dependency lock and cloud requirements carry two explicitly declared patch updates, not the historically executed environment identity.",
+    "No classifier algorithm, benchmark result or retrospective acceptance label was changed."
+  ],
+  "historical_execution_function_comparisons": [
+    {
+      "public_path": "src/fleet_fault_triage/cloud.py",
+      "function": "train_registered",
+      "historical_execution_revision": "13577cf4ebf3bc11d443982d9f223540f8e9dc10",
+      "historical_file_sha256": "970bd9cbcfd51189461621fd6b5df4ec9e67a4c68111ad303f48c06a25784c7a",
+      "historical_function_ast_sha256": "d8c40c1fb50e66b5b14ff56728c9ba0afea4122e2353c7fe3db13a6b9527da05",
+      "public_function_ast_sha256": "d8c40c1fb50e66b5b14ff56728c9ba0afea4122e2353c7fe3db13a6b9527da05",
+      "function_ast_identical": true,
+      "scope": "Function syntax comparison only; not a new execution or proof of all dependency equivalence."
+    },
+    {
+      "public_path": "src/fleet_fault_triage/cloud.py",
+      "function": "score_delta",
+      "historical_execution_revision": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "historical_file_sha256": "970bd9cbcfd51189461621fd6b5df4ec9e67a4c68111ad303f48c06a25784c7a",
+      "historical_function_ast_sha256": "894afbf30c58bcb23890af9779bcd408ea946f16e6be97fad4bf7bb2da2c826e",
+      "public_function_ast_sha256": "894afbf30c58bcb23890af9779bcd408ea946f16e6be97fad4bf7bb2da2c826e",
+      "function_ast_identical": true,
+      "scope": "Function syntax comparison only; not a new execution or proof of all dependency equivalence."
+    }
+  ],
+  "ast_canonicalization": {
+    "python_major_minor": "3.12",
+    "format": "ast.dump(include_attributes=False)"
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "original_path": ".gitattributes",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "d3041b5966b0e9d398bac6e3d58873bac8426c9a1c50a9c09e4b010991c51a63",
+      "sha256": "d3041b5966b0e9d398bac6e3d58873bac8426c9a1c50a9c09e4b010991c51a63",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "databricks.yml",
+      "original_path": "databricks.yml",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "3074ecafd209168c25ae7a3d6519ebc351b4c43daa59ae4d34c6cc5f8df53bea",
+      "sha256": "3074ecafd209168c25ae7a3d6519ebc351b4c43daa59ae4d34c6cc5f8df53bea",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "pyproject.toml",
+      "original_path": "pyproject.toml",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "0cc4e3d050e65a4013ecd98a24707a34374826bdbc81bb4671c2e2e8d37d3644",
+      "sha256": "0cc4e3d050e65a4013ecd98a24707a34374826bdbc81bb4671c2e2e8d37d3644",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/approval.example.json",
+      "original_path": "resources/approval.example.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "de62c572f7c1366391b0080e362a9536905f34ba52298b9876906b3b5cb33907",
+      "sha256": "de62c572f7c1366391b0080e362a9536905f34ba52298b9876906b3b5cb33907",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/azure/main.json",
+      "original_path": "resources/azure/main.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "bf377b444d0a699d3befebcc6f2fb771240418b303d0dd162501675b3abe610d",
+      "sha256": "bf377b444d0a699d3befebcc6f2fb771240418b303d0dd162501675b3abe610d",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/azure/parameters.example.json",
+      "original_path": "resources/azure/parameters.example.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "e0d400d76b092e3a9eb4725eefe813f7e60d5041c07fe64b7176e0e7fd933097",
+      "sha256": "e0d400d76b092e3a9eb4725eefe813f7e60d5041c07fe64b7176e0e7fd933097",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/bootstrap.sql",
+      "original_path": "resources/bootstrap.sql",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "20bcfd9d034b531378bbe489e0417f8e6928e2e1a04a93b5d742b808b06e5a1f",
+      "sha256": "20bcfd9d034b531378bbe489e0417f8e6928e2e1a04a93b5d742b808b06e5a1f",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/cloud.example.json",
+      "original_path": "resources/cloud.example.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "8bbbd4eacffb9625a52b1b942a4654808501fb5e649cb1eb6d012f8ebb88d29a",
+      "sha256": "3bc1d3ee904afc8824d6b7f97e4e653ab9040ddb21a8e988ffee860182415dbf",
+      "byte_identical": false,
+      "adaptation": "Only owner_identity changed to owner@example.invalid; other JSON fields and formatting preserved."
+    },
+    {
+      "path": "resources/data-grants.sql",
+      "original_path": "resources/data-grants.sql",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "bd764881e8f2184ef887b3c1989a678811e30370904dc91814e461c685ca08f4",
+      "sha256": "bd764881e8f2184ef887b3c1989a678811e30370904dc91814e461c685ca08f4",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/operation.example.json",
+      "original_path": "resources/operation.example.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "8b915b652587fb814a3ce58508cab05bc697d7cc2988ce3575e269ec6e313a7f",
+      "sha256": "d14e673b8a30d727d19fdcd034ad044a7a36d9749b8c6ca5190e65b821e4229e",
+      "byte_identical": false,
+      "adaptation": "Only the note changes: point to shipped docs/databricks.md; explicitly state private runbook/approvals are not included and the example grants no cloud execution authority."
+    },
+    {
+      "path": "resources/permissions.json",
+      "original_path": "resources/permissions.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "f0833d6d3620609c992a11d018167e5ad4c3e4e37822f38f0a08d55d8bd99c17",
+      "sha256": "f0833d6d3620609c992a11d018167e5ad4c3e4e37822f38f0a08d55d8bd99c17",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/prompts/investigator.md",
+      "original_path": "resources/prompts/investigator.md",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "611b9bc7da289e5587e82d6437bc9cf16c1330e866e076c58721b86187f56a48",
+      "sha256": "611b9bc7da289e5587e82d6437bc9cf16c1330e866e076c58721b86187f56a48",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/quote.example.json",
+      "original_path": "resources/quote.example.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "7c9ab087c8960ee9b1aca454c4c5c9f5cc85f7f4d3f15425e5216806b8453288",
+      "sha256": "7c9ab087c8960ee9b1aca454c4c5c9f5cc85f7f4d3f15425e5216806b8453288",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/reconciliation.example.json",
+      "original_path": "resources/reconciliation.example.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "ce5709623eea9f29ed70ef4ccfc27c376abcb914866790a4c30a50e2e820de0a",
+      "sha256": "ce5709623eea9f29ed70ef4ccfc27c376abcb914866790a4c30a50e2e820de0a",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/registry-grants.sql",
+      "original_path": "resources/registry-grants.sql",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "c4b84b2950ff69365313ca975e3030e48e6e2b09a1507fc9acecf7d1351ae155",
+      "sha256": "bf85e993227b53f9818fafe5bd5a682a082e5ebbc40045dc1bed57882828f699",
+      "byte_identical": false,
+      "adaptation": "Comment-only correction: point to shipped docs/databricks.md; state private executed command/approval runbook is not included. Executable SQL bytes are unchanged."
+    },
+    {
+      "path": "resources/requirements-cloud.txt",
+      "original_path": "resources/requirements-cloud.txt",
+      "source_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+      "source_sha256": "1ab3f79133d0d5bb15d25538ffa0868519575375a4be2433f5cbbd996d317cd5",
+      "sha256": "c2052669431e5989f3f4140f9110575f1d1903c067bd14c4df324ccaf5eb7269",
+      "byte_identical": false,
+      "adaptation": "Dependency-only packaging security patch for CVE-2026-126360: OpenTelemetry API/SDK1.45.1 to1.45.2 and semantic-conventions0.66b1 to0.66b2. Cloud requirements regenerated from the matching lock with declared uv export; no runtime source changed."
+    },
+    {
+      "path": "resources/runbooks/finops.json",
+      "original_path": "resources/runbooks/finops.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "2fb8e240100362d5beb8012aec6eb03abd35bf6d4d76f2e484270fec1bfa98fe",
+      "sha256": "2fb8e240100362d5beb8012aec6eb03abd35bf6d4d76f2e484270fec1bfa98fe",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/runbooks/interpretation.json",
+      "original_path": "resources/runbooks/interpretation.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "8bf9067cfb6cd25c084eb20fec057c72ed5728fcafd1507ed30bc6d1a4ce2717",
+      "sha256": "8bf9067cfb6cd25c084eb20fec057c72ed5728fcafd1507ed30bc6d1a4ce2717",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/runbooks/lineage.json",
+      "original_path": "resources/runbooks/lineage.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "9bc6bc8417b4f552dde18c5069d4b959a40bb1138208e2d19b071f0abd4d43e2",
+      "sha256": "9bc6bc8417b4f552dde18c5069d4b959a40bb1138208e2d19b071f0abd4d43e2",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/runbooks/monitoring.json",
+      "original_path": "resources/runbooks/monitoring.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "555b98e329950871cf4823e0cede179e25dd78443394a7ae848e1ae19ade75fa",
+      "sha256": "555b98e329950871cf4823e0cede179e25dd78443394a7ae848e1ae19ade75fa",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/runbooks/quality.json",
+      "original_path": "resources/runbooks/quality.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "ba7dfa6ce88c46343b9b4deee785112a92937f7900772e9ecd8d0632010683db",
+      "sha256": "ba7dfa6ce88c46343b9b4deee785112a92937f7900772e9ecd8d0632010683db",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/runbooks/rollback.json",
+      "original_path": "resources/runbooks/rollback.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "755cfbfecaf38e9ecd335012e93e019956f19ee720fe185a44d641602d2cda0b",
+      "sha256": "755cfbfecaf38e9ecd335012e93e019956f19ee720fe185a44d641602d2cda0b",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "resources/runbooks/service.json",
+      "original_path": "resources/runbooks/service.json",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "edde438c52e52b70f86d87411b7045684b5f135c4dd3828f78c561b888630ccd",
+      "sha256": "edde438c52e52b70f86d87411b7045684b5f135c4dd3828f78c561b888630ccd",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/__init__.py",
+      "original_path": "src/fleet_fault_triage/__init__.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "52461345ff05e6f48e1f6f98f4ccd0e9cceb7884d4c3b43433d2f0472ec139f0",
+      "sha256": "52461345ff05e6f48e1f6f98f4ccd0e9cceb7884d4c3b43433d2f0472ec139f0",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/budget.py",
+      "original_path": "src/fleet_fault_triage/budget.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "88808015a1534efa88f12290f8a11a45d4c18fa06535e9b1b1926025dc43805d",
+      "sha256": "88808015a1534efa88f12290f8a11a45d4c18fa06535e9b1b1926025dc43805d",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/cli.py",
+      "original_path": "src/fleet_fault_triage/cli.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "256bd91e5e9f72821e94cd9c8629a73b296e0101ca07e8e1f5a48c409d75c5eb",
+      "sha256": "256bd91e5e9f72821e94cd9c8629a73b296e0101ca07e8e1f5a48c409d75c5eb",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/cloud.py",
+      "original_path": "src/fleet_fault_triage/cloud.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "970bd9cbcfd51189461621fd6b5df4ec9e67a4c68111ad303f48c06a25784c7a",
+      "sha256": "970bd9cbcfd51189461621fd6b5df4ec9e67a4c68111ad303f48c06a25784c7a",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/cloud_tasks.py",
+      "original_path": "src/fleet_fault_triage/cloud_tasks.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "ff1a331863091b1a1b1160e73b30935f8ad1c4663f793bf68fddb373db220883",
+      "sha256": "ff1a331863091b1a1b1160e73b30935f8ad1c4663f793bf68fddb373db220883",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/contracts.py",
+      "original_path": "src/fleet_fault_triage/contracts.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "8c8f860d7588afdb222a8f81f0286c8061286c95923b3b50e68d08f5e0600a8a",
+      "sha256": "8c8f860d7588afdb222a8f81f0286c8061286c95923b3b50e68d08f5e0600a8a",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/data.py",
+      "original_path": "src/fleet_fault_triage/data.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "e1868b1d7dd861ba6e8a073c04d1de23c6723b453e691953ebe342b6447a63b9",
+      "sha256": "e1868b1d7dd861ba6e8a073c04d1de23c6723b453e691953ebe342b6447a63b9",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/doctor.py",
+      "original_path": "src/fleet_fault_triage/doctor.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "43c02368f64bed67ec439ca9826db508db79ce48095aaa39cbbae2338e76ff85",
+      "sha256": "43c02368f64bed67ec439ca9826db508db79ce48095aaa39cbbae2338e76ff85",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/evaluation.py",
+      "original_path": "src/fleet_fault_triage/evaluation.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "78e5d5d990bbf839d207d3e9c09b3fc1b0b919bf947449c759687742d4617352",
+      "sha256": "78e5d5d990bbf839d207d3e9c09b3fc1b0b919bf947449c759687742d4617352",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/evidence.py",
+      "original_path": "src/fleet_fault_triage/evidence.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "d558262a537604933a10217b69c510b4706926bcda508fb567db19bd117ae62f",
+      "sha256": "d558262a537604933a10217b69c510b4706926bcda508fb567db19bd117ae62f",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/finops.py",
+      "original_path": "src/fleet_fault_triage/finops.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "ef6d67d36dd17316836a2e769161f3c8e7aee2a5d7fdaeec28c78e8a3fed6a01",
+      "sha256": "ef6d67d36dd17316836a2e769161f3c8e7aee2a5d7fdaeec28c78e8a3fed6a01",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/investigation.py",
+      "original_path": "src/fleet_fault_triage/investigation.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "9f0f83f0a195e4ff6580ec2d2650ad959bac8d1aa7fd982b9bd40c7ba1632035",
+      "sha256": "9f0f83f0a195e4ff6580ec2d2650ad959bac8d1aa7fd982b9bd40c7ba1632035",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/lifecycle.py",
+      "original_path": "src/fleet_fault_triage/lifecycle.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "bf586c927284222f207ab8e5359cfedb206baa760e7059e863778a0bb504cd01",
+      "sha256": "bf586c927284222f207ab8e5359cfedb206baa760e7059e863778a0bb504cd01",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/model.py",
+      "original_path": "src/fleet_fault_triage/model.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "805e539d02fe98e9a4fe70ef60e792674442610ef81982c3eafd858913a21c7c",
+      "sha256": "805e539d02fe98e9a4fe70ef60e792674442610ef81982c3eafd858913a21c7c",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/monitoring.py",
+      "original_path": "src/fleet_fault_triage/monitoring.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "06a761d864053f288600e235459a65ab664632b11d1fe73ecced7c0ebd9fc84c",
+      "sha256": "06a761d864053f288600e235459a65ab664632b11d1fe73ecced7c0ebd9fc84c",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/operations.py",
+      "original_path": "src/fleet_fault_triage/operations.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "0fe00c9b21ad5eb7a1f3a15d079a41b814f11fc59d2b5669a62a1d44940abac7",
+      "sha256": "0fe00c9b21ad5eb7a1f3a15d079a41b814f11fc59d2b5669a62a1d44940abac7",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/registry.py",
+      "original_path": "src/fleet_fault_triage/registry.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "99089b7333dd6509f1031ba0d34be68bc0de7b86a699358e116c82abd364a3b8",
+      "sha256": "99089b7333dd6509f1031ba0d34be68bc0de7b86a699358e116c82abd364a3b8",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/rehearsal.py",
+      "original_path": "src/fleet_fault_triage/rehearsal.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "f5353df23fc0302621888508982c19ddd89c11985ede9914bd0eca7d6c5aaf15",
+      "sha256": "f5353df23fc0302621888508982c19ddd89c11985ede9914bd0eca7d6c5aaf15",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/retrieval.py",
+      "original_path": "src/fleet_fault_triage/retrieval.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "0bb15ccc810b7f41a628b4a89459ad6440f690f62620968c17941a6a2cfe09c6",
+      "sha256": "0bb15ccc810b7f41a628b4a89459ad6440f690f62620968c17941a6a2cfe09c6",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/runtime.py",
+      "original_path": "src/fleet_fault_triage/runtime.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "a03a4b0e986b09a0ff7fd30fe22b0840a2500c85bacbab5a14197ea10e89f0ee",
+      "sha256": "a03a4b0e986b09a0ff7fd30fe22b0840a2500c85bacbab5a14197ea10e89f0ee",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/scoring.py",
+      "original_path": "src/fleet_fault_triage/scoring.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "f3cd735b941079901d03f7edeaba83cf6790e93317a58ef2518c9241e20c1313",
+      "sha256": "f3cd735b941079901d03f7edeaba83cf6790e93317a58ef2518c9241e20c1313",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "src/fleet_fault_triage/staging.py",
+      "original_path": "src/fleet_fault_triage/staging.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "05739a74e5eb3446e1b3993d3b00ff82525f5a3387cd10f55885e54504494197",
+      "sha256": "05739a74e5eb3446e1b3993d3b00ff82525f5a3387cd10f55885e54504494197",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "uv.lock",
+      "original_path": "uv.lock",
+      "source_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+      "source_sha256": "405ff1f5daae811d503061f6a602cd921b49c1a62a1e1df5b402ccabf77df06a",
+      "sha256": "574cc8e40df919ae0ea44e0a44f5c767ef03bfb9f0771b291058de6a644a2938",
+      "byte_identical": false,
+      "adaptation": "Dependency-only packaging security patch for CVE-2026-126360: OpenTelemetry API/SDK1.45.1 to1.45.2 and semantic-conventions0.66b1 to0.66b2. Cloud requirements regenerated from the matching lock with declared uv export; no runtime source changed."
+    },
+    {
+      "path": "tests/test_application.py",
+      "original_path": "tests/test_application.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "3b92c771f43edce609a4b8f0b7e32858333711ee6bac9ba3033a8fd44093cbc1",
+      "sha256": "3b92c771f43edce609a4b8f0b7e32858333711ee6bac9ba3033a8fd44093cbc1",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "tests/test_data.py",
+      "original_path": "tests/test_data.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "295473722a81f9b6a25cca9b575ad1e5bd1202551c813054a874e1e2b3d07a5f",
+      "sha256": "295473722a81f9b6a25cca9b575ad1e5bd1202551c813054a874e1e2b3d07a5f",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "tests/test_model.py",
+      "original_path": "tests/test_model.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "fdf59fc2c407bc93b3af07b34d36f6d55962f769fa818dbfdac4cea46c97679a",
+      "sha256": "fdf59fc2c407bc93b3af07b34d36f6d55962f769fa818dbfdac4cea46c97679a",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "tests/test_cloud_guards.py",
+      "original_path": "tests/test_cloud_guards.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "87c3c3a7e989ebec2b6866650e00876f658268f95f7bd4b554d990a91a01f543",
+      "sha256": "87c3c3a7e989ebec2b6866650e00876f658268f95f7bd4b554d990a91a01f543",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "tests/test_finops.py",
+      "original_path": "tests/test_finops.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "1efc37ee7cb831a51bf0de4994b561f5dfd58720a8e06c322c4cf1f797a49ad1",
+      "sha256": "1efc37ee7cb831a51bf0de4994b561f5dfd58720a8e06c322c4cf1f797a49ad1",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "tests/test_evaluation_staging.py",
+      "original_path": "tests/test_evaluation_staging.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "ac60f0bedd64ff9997161bb222fc17f09b2cef5eaa68d6144593374e9e0138e4",
+      "sha256": "ac60f0bedd64ff9997161bb222fc17f09b2cef5eaa68d6144593374e9e0138e4",
+      "byte_identical": true,
+      "adaptation": null
+    },
+    {
+      "path": "tests/test_staging.py",
+      "original_path": "tests/test_staging.py",
+      "source_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "source_sha256": "617db97ce289f35505f96c355cb2987a133986ab8124ea395ba000c106511308",
+      "sha256": "617db97ce289f35505f96c355cb2987a133986ab8124ea395ba000c106511308",
+      "byte_identical": true,
+      "adaptation": null
+    }
+  ],
+  "limits": [
+    "Original source revisions and unredacted research records remain in the private archive.",
+    "This later curated package is not labelled as the exact historical deployed wheel.",
+    "The public focused suite and synthetic demo establish their own scope, not historical cloud execution or full research acceptance."
+  ]
+}

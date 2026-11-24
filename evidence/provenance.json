@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "kind": "public_evidence_projection_manifest",
+  "extract_created_on": "2026-11-24",
+  "original_source_snapshot_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+  "selection_policy": "Explicit field allowlists and declared aggregate derivations; no whole native response or private record is copied.",
+  "sources": [
+    {
+      "source_id": "S1",
+      "evidence_class": "coordinator_authored_summary",
+      "original_repository_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+      "original_repository_path": "docs/cloud-proof-2026-10-27.json",
+      "original_raw_sha256": "53895231513d6856a6d85a3db6af58c3916338a48bdd182b1382e756a3736b4a",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "S2",
+      "evidence_class": "coordinator_authored_summary",
+      "original_repository_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+      "original_repository_path": "docs/candidate-metadata-proof-2026-10-27.json",
+      "original_raw_sha256": "7caac0921b60a85a93addbc678ae9532df3a342d8d48fe61b8d953cf8a86dce0",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "S3",
+      "evidence_class": "coordinator_authored_summary",
+      "original_repository_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+      "original_repository_path": "docs/cloud-scoring-proof-2026-10-29.json",
+      "original_raw_sha256": "55bdc542793d3cf4e34595459db907365b0a76211b64db1a3efabce5c2a78716",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "S4",
+      "evidence_class": "coordinator_authored_summary",
+      "original_repository_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+      "original_repository_path": "docs/exact-cloud-model-preservation-2026-11-05.json",
+      "original_raw_sha256": "2c616ae0e432021f5cbadc79f9a995618f49653efbb3a40742c119c1de2379bc",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "S5",
+      "evidence_class": "coordinator_authored_summary",
+      "original_repository_commit": "cd13560ba2ae7b5ee6a26a1a59460d0c9dfe3e43",
+      "original_repository_path": "docs/finalisation-recovery-development-results-2026-11-11.json",
+      "original_raw_sha256": "acab38e39bb1759077a353a44156de7eac54c033ccf44c9c72e5483d0af1b515",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "V1",
+      "evidence_class": "coordinator_saved_state_verification",
+      "original_repository_commit": null,
+      "original_source_basename": "verified-training.json",
+      "private_capture_path": "withheld",
+      "original_raw_sha256": "2bd93c4e5c646a1edfeaaec1ff0b762fc6bd5a508f2fcb0035aac625023fc22b",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "N1",
+      "evidence_class": "preserved_databricks_sdk_response",
+      "original_repository_commit": null,
+      "original_source_basename": "job-run.json",
+      "private_capture_path": "withheld",
+      "original_raw_sha256": "a1ab32608408cc5eb91a815002fd638978b6cad4ce7d927d670f6abaf592269d",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "N2",
+      "evidence_class": "preserved_databricks_sdk_response",
+      "original_repository_commit": null,
+      "original_source_basename": "model-version.json",
+      "private_capture_path": "withheld",
+      "original_raw_sha256": "0e69bc399bc8efbc89227e09ca4be700c7a530cf2bd6f810bcd27fa23f30f858",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "N3",
+      "evidence_class": "preserved_databricks_sdk_response",
+      "original_repository_commit": null,
+      "original_source_basename": "training-table.json",
+      "private_capture_path": "withheld",
+      "original_raw_sha256": "bee8450ee29ec3d6b07638513177c9c83717e31d85987b3ea62ac40e6978e45f",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "N4",
+      "evidence_class": "preserved_databricks_sdk_response",
+      "original_repository_commit": null,
+      "original_source_basename": "fit_attempts-table.json",
+      "private_capture_path": "withheld",
+      "original_raw_sha256": "15aa0a5508784ba68309c8100868cc05ed3a7768f8deaa247f6797d48263fa16",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "N5",
+      "evidence_class": "preserved_databricks_sdk_response",
+      "original_repository_commit": null,
+      "original_source_basename": "native-job.json",
+      "private_capture_path": "withheld",
+      "original_raw_sha256": "2ecd120bc5ba306d969eeadea55411d3879815fdb362e4c911695d0b5846e52a",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "N6",
+      "evidence_class": "preserved_databricks_sdk_response",
+      "original_repository_commit": null,
+      "original_source_basename": "scoring-table.json",
+      "private_capture_path": "withheld",
+      "original_raw_sha256": "7547b05db896e97edee763e9b1a31faf5f1f265fafab4d63c7940d688a476c40",
+      "original_bytes_in_public_package": false
+    },
+    {
+      "source_id": "C1",
+      "evidence_class": "shipped_source_code_scope_interpretation",
+      "original_repository_commit": "6e444e89be2f73cbbdd8f3c0901be1cddb88a621",
+      "original_repository_path": "src/fleet_fault_triage/evaluation.py",
+      "original_raw_sha256": "78e5d5d990bbf839d207d3e9c09b3fc1b0b919bf947449c759687742d4617352",
+      "original_bytes_in_public_package": true,
+      "public_path": "src/fleet_fault_triage/evaluation.py",
+      "verified_against_public_source_manifest": "evidence/source-provenance.json",
+      "function": "evaluate_external",
+      "scope_lines": [
+        62,
+        63,
+        82,
+        83
+      ]
+    }
+  ],
+  "source_integrity_links_verified_during_packaging": [
+    {
+      "source_id": "V1",
+      "referenced_by": "S1",
+      "json_pointer": "/training/receipt_sha256"
+    },
+    {
+      "source_id": "N1",
+      "referenced_by": "V1",
+      "json_pointer": "/native_receipt_sha256/job-run"
+    },
+    {
+      "source_id": "N2",
+      "referenced_by": "V1",
+      "json_pointer": "/native_receipt_sha256/model-version"
+    },
+    {
+      "source_id": "N3",
+      "referenced_by": "V1",
+      "json_pointer": "/native_receipt_sha256/training-table"
+    },
+    {
+      "source_id": "N4",
+      "referenced_by": "V1",
+      "json_pointer": "/native_receipt_sha256/fit_attempts-table"
+    },
+    {
+      "source_id": "N5",
+      "referenced_by": "S3",
+      "json_pointer": "/receipt_sha256/native-job.json"
+    },
+    {
+      "source_id": "N6",
+      "referenced_by": "S3",
+      "json_pointer": "/receipt_sha256/scoring-table.json"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "evidence/classifier-benchmark.json",
+      "sha256": "ee70cf79183f6c892822f108d9d93242f7fc69cacf88361b15f73aff9ec5d9c5",
+      "source_field_projection": {
+        "S1": [
+          "/observed_date_australia_melbourne",
+          "/workload_commit",
+          "/evaluation (explicit selected scalar/aggregate fields)"
+        ],
+        "C1": [
+          "evaluate_external: eligibility mask and selected population (lines 62-63)",
+          "evaluate_external: selected.group_id.isin(training_groups) overlap check (lines 82-83)"
+        ]
+      }
+    },
+    {
+      "path": "evidence/databricks-delivery.json",
+      "sha256": "cb117c7b28435bc8c1075c0f86bc29ca9e3721429b673fbc265be4c6685ac746",
+      "source_field_projection": {
+        "S1": [
+          "/observed_date_australia_melbourne",
+          "/workload_commit",
+          "/training (explicit selected verification/aggregate fields)",
+          "/access/three_storage_role_probes_and_denials_verified",
+          "/access/evaluator_and_scorer_execute_only_model_readback_verified",
+          "/access/model_ownership_transfer",
+          "/access/runtime_principals_unchanged",
+          "/access/model_version_1_unchanged",
+          "/access/aliases_created"
+        ],
+        "S2": [
+          "/signature",
+          "/delta_lineage (three selected fields)",
+          "/lineage_limit"
+        ],
+        "N1": [
+          "/run_type",
+          "/state/life_cycle_state",
+          "/state/result_state",
+          "/state/user_cancelled_or_timedout"
+        ],
+        "N2": [
+          "/version",
+          "/status"
+        ],
+        "N3": [
+          "/data_source_format",
+          "/table_type",
+          "/columns (length only)"
+        ],
+        "N4": [
+          "/data_source_format",
+          "/table_type",
+          "/columns (length only)"
+        ]
+      }
+    },
+    {
+      "path": "evidence/delta-scoring.json",
+      "sha256": "b34a841a6c2b4601957d0f9b67ce3b6ff0af9354620808dc35609f64d46a14e3",
+      "source_field_projection": {
+        "S3": [
+          "/date_australia_melbourne",
+          "(explicit selected counts/status/verification fields)"
+        ],
+        "N5": [
+          "/run_type",
+          "/state/life_cycle_state",
+          "/state/result_state",
+          "/state/user_cancelled_or_timedout"
+        ],
+        "N6": [
+          "/data_source_format",
+          "/table_type",
+          "/columns (length; name/type_name/nullable only)"
+        ]
+      }
+    },
+    {
+      "path": "evidence/assistant-status.json",
+      "sha256": "ca8ed09f98010b05b26c1eff212b66ccc0e1822aa16aebf67252d3f1dbb5f23a",
+      "source_field_projection": {
+        "S5": [
+          "/status",
+          "/source_commit",
+          "/candidate_sha256",
+          "/execution/saved_outcomes",
+          "/independent_AI_semantic_reviews (selected aggregate inventories; reviewer identity fields omitted)",
+          "/origins_and_controls_per_method (selected fields)",
+          "/remaining_gates (selected fields)"
+        ]
+      }
+    },
+    {
+      "path": "evidence/preservation.json",
+      "sha256": "98c1d2454eac7efe5dfe67f740a5c339027a5fc4fbab8b6eb2c9c3e82803a9bf",
+      "source_field_projection": {
+        "S4": [
+          "/status",
+          "/scoring_release_sha256",
+          "/source_commit",
+          "/native_export (selected verification/count fields)",
+          "/private_google_backup (selected aggregate/privacy flags and archive hash)"
+        ]
+      }
+    }
+  ],
+  "redactions": [
+    "All non-selected source fields are omitted rather than replaced with fabricated values.",
+    "Provider account/principal/resource identifiers, usernames, workspace/job/run IDs, URLs, storage paths, job parameters and free-text state messages are omitted from native response projections.",
+    "Original private capture paths and backup identifiers/URLs are withheld; native source basenames and original raw-file hashes identify the preserved records without publishing their locations.",
+    "Source data, row-level derivatives, model binaries/input examples, assistant questions/answers/expectations, private human approvals, full logs and financial authority/history are excluded."
+  ],
+  "verification_limits": [
+    "The public output checksums verify the shipped extracts, not the truth or completeness of withheld originals.",
+    "Original raw hashes were checked against the owning preserved verification chain during packaging. A public reader cannot independently re-check those withheld bytes from a hash alone.",
+    "Preserved SDK-response projections are historical files, not live provider queries or digitally signed provider attestations.",
+    "Coordinator-authored summaries and native-response projections are identified separately; neither supplies current production, field, human or end-to-end acceptance.",
+    "Original repository paths are provenance metadata, not links promising access to the private working archive.",
+    "This manifest lists five output checksums and deliberately does not hash itself."
+  ],
+  "scope_derivations": [
+    {
+      "output_path": "evidence/classifier-benchmark.json",
+      "output_fields": [
+        "/overlap_scope",
+        "/overlap_limit"
+      ],
+      "source_ref": "C1",
+      "public_source_path": "src/fleet_fault_triage/evaluation.py",
+      "source_lines": [
+        62,
+        63,
+        82,
+        83
+      ],
+      "derivation": "The overlap mask is computed from selected after the input-quality eligibility filter. Therefore the recorded zero applies only to the 15,872 scored records; the 128 unscored records are outside that check."
+    }
+  ]
+}

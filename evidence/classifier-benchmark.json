@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "kind": "public_evidence_extract",
+  "extract_created_on": "2026-11-24",
+  "source_refs": [
+    "S1",
+    "C1"
+  ],
+  "scope": "Frozen one-shot retrospective Scania APS benchmark; scored-record metrics with coverage, not field or future-failure performance.",
+  "provenance": "evidence/provenance.json",
+  "evidence_class": "coordinator_authored_summary",
+  "observed_date_australia_melbourne": "2026-10-27",
+  "dataset": "APS Failure at Scania Trucks (Scania CV AB / UCI 421; DOI 10.24432/C51S51)",
+  "workload_commit": "13577cf4ebf3bc11d443982d9f223540f8e9dc10",
+  "scoring_release_sha256": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69",
+  "evaluation": {
+    "status": "one_shot_succeeded_quality_gates_passed",
+    "input_rows": 16000,
+    "scorable_rows": 15872,
+    "quarantined_rows": 0,
+    "coverage": 0.992,
+    "recall": 0.9402173913043478,
+    "precision": 0.5274390243902439,
+    "average_precision": 0.9091008079100473,
+    "confusion_matrix": {
+      "tp": 346,
+      "tn": 15194,
+      "fp": 310,
+      "fn": 22
+    },
+    "recall_interval_95": [
+      0.911146719118698,
+      0.9601923753103506
+    ],
+    "precision_interval_95": [
+      0.4891861055677377,
+      0.5653724547026965
+    ],
+    "cross_file_overlap_rows": 0,
+    "test_consumed_once": true,
+    "retuning": false
+  },
+  "unscored_rows_derived": 128,
+  "unscored_rows_formula": "evaluation.input_rows - evaluation.scorable_rows",
+  "overlap_scope": {
+    "source_ref": "C1",
+    "population": "Input-quality-eligible scored test records only",
+    "rows_checked": 15872,
+    "implementation": "src/fleet_fault_triage/evaluation.py",
+    "function": "evaluate_external",
+    "eligibility_selection_lines": [
+      62,
+      63
+    ],
+    "overlap_check_lines": [
+      82,
+      83
+    ]
+  },
+  "overlap_limit": "The 128 unscored records were excluded from this overlap check. The reported zero cross-file overlap does not establish zero overlap across all 16,000 input records or independence between vehicles or time periods.",
+  "interpretation": [
+    "Positive means a recorded APS-related component fault; negative means another recorded component fault, not a healthy truck.",
+    "Recall, precision and average precision exclude unscored records; coverage is reported alongside them.",
+    "No vehicle/time generalisation, prospective warning horizon, causal diagnosis, operational ROI or production acceptance is established."
+  ]
+}

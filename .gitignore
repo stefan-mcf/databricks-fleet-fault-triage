@@ -1,0 +1,47 @@
+# Private research, credentials and native handoff working files
+.agent-handoffs/
+SHOWCASE-BRIEF.md
+research/
+.env
+.env.*
+.azure/
+.databricks/
+.databrickscfg
+*.pem
+*.key
+
+# No raw benchmark records, models or generated execution evidence
+data/
+datasets/
+models/
+artifacts/
+outputs/
+mlruns/
+mlartifacts/
+*.csv
+*.parquet
+*.pkl
+*.pickle
+*.joblib
+*.skops
+*.onnx
+*.zip
+*.db
+*.sqlite*
+
+# Local environment, build and cache
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage*
+htmlcov/
+dist/
+build/
+*.egg-info/
+.DS_Store
+.idea/
+.vscode/

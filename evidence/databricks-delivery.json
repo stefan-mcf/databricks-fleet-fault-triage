@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "kind": "public_evidence_extract",
+  "extract_created_on": "2026-11-24",
+  "source_refs": [
+    "S1",
+    "S2",
+    "V1",
+    "N1",
+    "N2",
+    "N3",
+    "N4"
+  ],
+  "scope": "Controlled Azure Databricks training, model registration and associated Delta/MLflow metadata captured in October 2026.",
+  "provenance": "evidence/provenance.json",
+  "evidence_class": "mixed_coordinator_summary_and_selected_preserved_sdk_fields",
+  "observed_date_australia_melbourne": "2026-10-27",
+  "training_workload_commit": "13577cf4ebf3bc11d443982d9f223540f8e9dc10",
+  "training_summary": {
+    "provider": "Azure Databricks",
+    "job_success_and_cluster_termination_verified": true,
+    "runtime_package_dependencies_workspace_and_principal_verified": true,
+    "unity_catalog_model_version": 1,
+    "model_status": "READY",
+    "mlflow_run_and_delta_input_lineage_read_back": true,
+    "delta_training_and_fit_tables_read_back": true,
+    "persisted_prediction_readback_passed": true,
+    "parity_rows": 11910,
+    "parity_max_absolute_difference": 2.220446049250313e-16,
+    "parity_tolerance": 1e-06,
+    "local_fits_including_failures": 82,
+    "cloud_fits": 2,
+    "total_fits": 84
+  },
+  "model_signature_summary": {
+    "feature_count": 170,
+    "input_type": "double",
+    "frozen_feature_order_matches": true,
+    "output_shape": [
+      -1,
+      2
+    ],
+    "serialization_format": "skops"
+  },
+  "delta_lineage_summary": {
+    "logged_training_read_version": 0,
+    "current_table_history_queried": false,
+    "explicit_version_as_of_pinning_verified": false
+  },
+  "lineage_limit": "Spark datasource information can be cached and attached to subsequent runs. This is associated read-version evidence; the model fits the verified prepared Parquet mirrored to Delta. It is not a current-history query or an explicit time-travel pin.",
+  "native_response_projections": {
+    "training_job": {
+      "source_ref": "N1",
+      "run_type": "JOB_RUN",
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "user_cancelled_or_timedout": false
+      }
+    },
+    "unity_catalog_model_version": {
+      "source_ref": "N2",
+      "version": 1,
+      "status": "READY"
+    },
+    "training_table": {
+      "source_ref": "N3",
+      "data_source_format": "DELTA",
+      "table_type": "MANAGED",
+      "column_count_derived": 175
+    },
+    "fit_attempts_table": {
+      "source_ref": "N4",
+      "data_source_format": "DELTA",
+      "table_type": "MANAGED",
+      "column_count_derived": 2
+    }
+  },
+  "governance_summary": {
+    "source_ref": "S1",
+    "three_storage_role_probes_and_denials_verified": true,
+    "evaluator_and_scorer_execute_only_model_readback_verified": true,
+    "model_ownership_transfer": "verified_designated_model_owner",
+    "runtime_principals_unchanged": true,
+    "model_version_1_unchanged": true,
+    "aliases_created": false
+  },
+  "limits": [
+    "The summary reports persisted prediction and lineage verification; selected SDK metadata alone does not prove prediction parity or model quality.",
+    "READY model registration is not an approved champion promotion, rollback demonstration, production deployment or field validation.",
+    "Provider identifiers, account identities, storage locations, job parameters, URLs and non-selected fields are omitted.",
+    "These are projections of locally preserved SDK-response files, not freshly queried or digitally signed provider attestations."
+  ]
+}

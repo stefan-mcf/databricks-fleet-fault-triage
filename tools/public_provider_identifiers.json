@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "scope": "Finite public Azure built-in-role catalog identifiers retained from the selected historical source; not subscription, tenant, application or object identities.",
+  "references": [
+    "https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles"
+  ],
+  "public_guids": [
+    "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "ba92f5b4-2d11-453d-a403-e96b0029c9fe"
+  ]
+}

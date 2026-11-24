@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "kind": "public_evidence_extract",
+  "extract_created_on": "2026-11-24",
+  "source_refs": [
+    "S4"
+  ],
+  "scope": "Historical continuity and owner-only preservation of the exact registered classifier; model archive and bundled input examples are not shipped.",
+  "provenance": "evidence/provenance.json",
+  "evidence_class": "coordinator_authored_summary",
+  "observed_date_australia_melbourne": "2026-11-05",
+  "status": "exact_registered_model_export_and_private_off_device_backup_verified",
+  "scoring_release_sha256": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69",
+  "preservation_source_commit": "d182e942bb432229877589295a5bb97b1bcd2c03",
+  "native_export_summary": {
+    "registered_UC_copy": true,
+    "files": 12,
+    "bytes": 3250122,
+    "complete_inventory_and_each_saved_member_hash_verified": true,
+    "local_restore_hash_verified": true,
+    "credential_cleanup_verified": true,
+    "new_fits_or_inference": 0,
+    "model_deserialisations": 0,
+    "compute_starts": 0,
+    "permission_owner_or_alias_changes": 0
+  },
+  "private_backup_summary": {
+    "archive_bytes": 487340,
+    "archive_sha256": "4cd54349e342516cb2757e1ba2eeff4152ea1345f43cfa8bc10450960741112f",
+    "shared": false,
+    "downloaded_archive_hash_and_size_match": true,
+    "signed_download_url_persisted": false,
+    "complete_benchmark_dataset_files_included": false,
+    "bundled_model_input_examples_preserved": true,
+    "public_redistribution_authorised": false
+  },
+  "limits": [
+    "This is an attributed summary, not a public copy of the model or a public restore test.",
+    "The historical private model archive contains bundled model input examples, so no no-row-data claim is made for that archive.",
+    "No archive, model weights, input examples, backup identifiers, private URLs or access details are included in this showcase.",
+    "Model preservation does not establish new evaluation, native promotion/rollback, human acceptance or full project release."
+  ]
+}

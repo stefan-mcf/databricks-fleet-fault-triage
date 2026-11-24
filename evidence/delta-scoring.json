@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "kind": "public_evidence_extract",
+  "extract_created_on": "2026-11-24",
+  "source_refs": [
+    "S3",
+    "N5",
+    "N6"
+  ],
+  "scope": "Controlled replay of Scania training-partition records through governed batch scoring and persisted Delta results; not another independent quality test.",
+  "provenance": "evidence/provenance.json",
+  "evidence_class": "mixed_coordinator_summary_and_selected_preserved_sdk_fields",
+  "observed_date_australia_melbourne": "2026-10-29",
+  "summary": {
+    "release_sha256": "c4209014a0613150b515c1ea45ccde0799cf4d748d7e8cafe892601d16fdcf69",
+    "model_source_commit": "13577cf4ebf3bc11d443982d9f223540f8e9dc10",
+    "case_rows": 120,
+    "scored_rows": 119,
+    "quality_abstentions": 1,
+    "origin": "azure",
+    "native_job_success": true,
+    "runtime_source_dependencies_workspace_and_scorer_identity_verified": true,
+    "managed_delta_table_format": "DELTA",
+    "managed_delta_table_owner_matches_scorer": true,
+    "delta_batch_write_and_payload_readback_verified_by_frozen_runtime": true,
+    "delta_commit_version": null,
+    "local_cases_saved_and_read_back": 120,
+    "new_fits": 0,
+    "consumed_holdout_reopened": false,
+    "model_alias_or_promotion_changed": false,
+    "temporary_cluster_terminated": true,
+    "termination_reason": "JOB_FINISHED"
+  },
+  "native_response_projections": {
+    "scoring_job": {
+      "source_ref": "N5",
+      "run_type": "JOB_RUN",
+      "state": {
+        "life_cycle_state": "TERMINATED",
+        "result_state": "SUCCESS",
+        "user_cancelled_or_timedout": false
+      }
+    },
+    "scoring_table": {
+      "source_ref": "N6",
+      "data_source_format": "DELTA",
+      "table_type": "MANAGED",
+      "column_count_derived": 3,
+      "schema": [
+        {
+          "name": "batch_id",
+          "type_name": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "payload",
+          "type_name": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "output_hash",
+          "type_name": "STRING",
+          "nullable": true
+        }
+      ]
+    }
+  },
+  "limits": [
+    "No source records, score payloads, model input examples, account identifiers or native table/storage locations are redistributed.",
+    "The SDK table projection establishes selected format/schema metadata; counts and payload-readback conclusions come from the coordinator summary.",
+    "A null Delta commit version remains unknown; this extract does not invent an explicit time-travel pin.",
+    "This historical readback does not claim that cloud resources remain running or reachable today."
+  ]
+}
