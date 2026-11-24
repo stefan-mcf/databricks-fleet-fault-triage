@@ -1,0 +1,15 @@
+{
+  "status": "planned_not_granted",
+  "project": "fleet-fault-triage",
+  "roles": {
+    "trainer": {"read": ["development.inputs", "development.training"], "write": ["development.fit_attempts", "development.training", "development.model_candidates"], "deny": ["evaluation.sealed", "evidence.champion_alias", "search.index_write"]},
+    "evaluator": {"read": ["development.training", "development.numeric_model", "evaluation.sealed"], "write": ["evaluation.reservations", "evaluation.results"], "deny": ["development.training_write", "champion_alias"]},
+    "scorer": {"read": ["evidence.approved_release", "development.numeric_model"], "write": ["evidence.scoring", "evidence.monitoring"], "deny": ["evaluation.sealed", "development.training_write", "champion_alias"]},
+    "investigator": {"read": ["evidence.authorised_cases", "search.approved_index", "foundry.inference"], "write": [], "deny": ["review_events", "champion_alias", "search.index_write", "evaluation.sealed", "shell", "arbitrary_sql", "arbitrary_url", "arbitrary_file"]},
+    "index_publisher": {"read": ["approved_project_runbooks"], "write": ["search.approved_index", "foundry.embedding"], "deny": ["evaluation.sealed", "review_events", "champion_alias"]},
+    "model_owner": {"read": ["evaluation.results", "evidence.releases"], "write": ["champion_alias", "evidence.releases"], "deny": ["unapproved_promotion", "evidence.control_write"]},
+    "human_reviewer": {"read": ["evidence.authorised_cases", "evidence.draft_briefs"], "write": ["append_only_review_events"], "deny": ["scores_overwrite", "champion_alias", "equipment_control"]}
+  },
+  "live_proof_required": ["read_allowed_resource", "read_denied_resource", "write_denied_resource", "token_audience", "actual_principal_and_grant_readback"],
+  "network": "Authenticated public endpoints for reviewed public benchmark only; no private-network or OT access claim."
+}

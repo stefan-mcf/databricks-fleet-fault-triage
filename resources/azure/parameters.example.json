@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {"value": "australiaeast"}, "prefix": {"value": "fftproof"},
+    "storageName": {"value": "fftproofUNVERIFIED"},
+    "expiresOn": {"value": "OWNER_MUST_SET_AFTER_APPROVAL"},
+    "generationModel": {"value": "UNVERIFIED"}, "generationVersion": {"value": "UNVERIFIED"},
+    "embeddingModel": {"value": "UNVERIFIED"}, "embeddingVersion": {"value": "UNVERIFIED"},
+    "modelDeploymentSku": {"value": "Standard"},
+    "generationCapacity": {"value": 1}, "embeddingCapacity": {"value": 1}
+  }
+}

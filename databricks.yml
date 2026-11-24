@@ -1,0 +1,140 @@
+bundle:
+  name: fleet-fault-triage
+
+variables:
+  workspace_host:
+    description: Exact approved Azure Databricks workspace host
+  trainer_principal:
+    description: Approved trainer service-principal application ID
+  evaluator_principal:
+    description: Separate evaluator service-principal application ID
+  scorer_principal:
+    description: Separate scorer service-principal application ID
+  runtime:
+    default: 16.4.x-cpu-ml-scala2.12
+    description: Python 3.12 CPU ML candidate; actual entitlement and dependency compatibility must pass preflight
+  node_type:
+    default: Standard_E4ds_v6
+  compute_policy_id:
+    description: Exact owned single-node CPU jobs-only policy ID from provider readback
+  volume_root:
+    description: Approved project evidence volume path containing private config and permits
+
+workspace:
+  host: ${var.workspace_host}
+
+artifacts:
+  package:
+    type: whl
+    build: uv build
+    path: .
+
+sync:
+  exclude:
+    - .azure/**
+    - .databricks/**
+    - .env*
+    - data/**
+    - artifacts/**
+    - outputs/**
+    - models/**
+    - mlruns/**
+    - resources/evaluation/**
+    - tools/**
+    - tests/**
+
+resources:
+  jobs:
+    train:
+      name: fleet-fault-triage-train
+      max_concurrent_runs: 1
+      timeout_seconds: 1800
+      parameters: &parameters
+        - name: config
+          default: ${var.volume_root}/control/config.json
+        - name: permit
+          default: UNAPPROVED
+      run_as:
+        service_principal_name: ${var.trainer_principal}
+      tags: {project: fleet-fault-triage, component: training, environment: proof}
+      tasks:
+        - task_key: frozen_recipe
+          max_retries: 0
+          timeout_seconds: 1800
+          new_cluster: &cpu
+            policy_id: ${var.compute_policy_id}
+            apply_policy_default_values: true
+            spark_version: ${var.runtime}
+            node_type_id: ${var.node_type}
+            num_workers: 0
+            data_security_mode: SINGLE_USER
+            spark_conf:
+              spark.databricks.cluster.profile: singleNode
+              spark.master: local[*, 2]
+            custom_tags: {ResourceClass: SingleNode}
+          libraries: &libraries
+            - whl: ./dist/*.whl
+            - requirements: ${workspace.file_path}/resources/requirements-cloud.txt
+          python_wheel_task:
+            package_name: fleet_fault_triage
+            entry_point: fft
+            parameters: [cloud-task, --task, train, --config, '{{job.parameters.config}}', --permit, '{{job.parameters.permit}}']
+    evaluate:
+      name: fleet-fault-triage-one-shot-evaluate
+      max_concurrent_runs: 1
+      timeout_seconds: 1800
+      parameters: *parameters
+      run_as:
+        service_principal_name: ${var.evaluator_principal}
+      tags: {project: fleet-fault-triage, component: evaluation, environment: proof}
+      tasks:
+        - task_key: one_shot
+          max_retries: 0
+          timeout_seconds: 1800
+          new_cluster: *cpu
+          libraries: *libraries
+          python_wheel_task:
+            package_name: fleet_fault_triage
+            entry_point: fft
+            parameters: [cloud-task, --task, evaluate, --config, '{{job.parameters.config}}', --permit, '{{job.parameters.permit}}']
+    score:
+      name: fleet-fault-triage-score
+      max_concurrent_runs: 1
+      timeout_seconds: 900
+      parameters: *parameters
+      run_as:
+        service_principal_name: ${var.scorer_principal}
+      tags: {project: fleet-fault-triage, component: scoring, environment: proof}
+      tasks:
+        - task_key: score
+          max_retries: 0
+          timeout_seconds: 900
+          new_cluster: *cpu
+          libraries: *libraries
+          python_wheel_task:
+            package_name: fleet_fault_triage
+            entry_point: fft
+            parameters: [cloud-task, --task, score, --config, '{{job.parameters.config}}', --permit, '{{job.parameters.permit}}']
+    monitor:
+      name: fleet-fault-triage-monitor
+      max_concurrent_runs: 1
+      timeout_seconds: 900
+      parameters: *parameters
+      run_as:
+        service_principal_name: ${var.scorer_principal}
+      tags: {project: fleet-fault-triage, component: monitoring, environment: proof}
+      tasks:
+        - task_key: monitor
+          max_retries: 0
+          timeout_seconds: 900
+          new_cluster: *cpu
+          libraries: *libraries
+          python_wheel_task:
+            package_name: fleet_fault_triage
+            entry_point: fft
+            parameters: [cloud-task, --task, monitor, --config, '{{job.parameters.config}}', --permit, '{{job.parameters.permit}}']
+
+targets:
+  proof:
+    default: true
+    mode: production

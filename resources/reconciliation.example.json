@@ -1,0 +1,7 @@
+{
+  "currency": "AUD",
+  "observed_utc": null,
+  "complete_through_observed_time": false,
+  "accrued_aud": null,
+  "evidence": "No cloud costs have been measured; unknowns deliberately block execution"
+}

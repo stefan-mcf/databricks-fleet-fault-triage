@@ -1,0 +1,5 @@
+{
+  "maximum_aud": null,
+  "private_output": "outputs/cloud-run",
+  "note": "Reference only: see the shipped docs/databricks.md for the historical Databricks workflow and execution boundaries. The private operation runbook and approvals are not included; this example grants no cloud execution authority."
+}

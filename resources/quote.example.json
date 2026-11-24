@@ -1,0 +1,9 @@
+{
+  "currency": "AUD",
+  "observed_utc": null,
+  "components": [
+    {"category": "compute", "meter": "EXACT_REGION_SKU_METER_REQUIRED", "rate_aud": null, "maximum_quantity": null, "verified_free": false}
+  ],
+  "tax_and_uncertainty_multiplier": "1.25",
+  "note": "Include every action-specific meter, maximum retries/startup/idle time and lifetime networking/storage; not valid authority"
+}

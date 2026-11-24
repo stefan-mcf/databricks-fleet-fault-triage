@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {"description": "Unapproved portfolio topology; no deployment occurs during local scaffolding. Managed Databricks networking adds NAT/IP cost."},
+  "parameters": {
+    "location": {"type": "string", "allowedValues": ["australiaeast"]},
+    "prefix": {"type": "string", "minLength": 3, "maxLength": 16},
+    "storageName": {"type": "string", "minLength": 3, "maxLength": 24},
+    "expiresOn": {"type": "string"},
+    "generationModel": {"type": "string"},
+    "generationVersion": {"type": "string"},
+    "embeddingModel": {"type": "string"},
+    "embeddingVersion": {"type": "string"},
+    "modelDeploymentSku": {"type": "string", "allowedValues": ["Standard", "GlobalStandard"]},
+    "generationCapacity": {"type": "int", "minValue": 1, "maxValue": 50},
+    "embeddingCapacity": {"type": "int", "minValue": 1, "maxValue": 10}
+  },
+  "variables": {"tags": {"project": "fleet-fault-triage", "environment": "proof", "expiresOn": "[parameters('expiresOn')]"}},
+  "resources": [
+    {"type": "Microsoft.Storage/storageAccounts", "apiVersion": "2025-01-01", "name": "[parameters('storageName')]", "location": "[parameters('location')]", "tags": "[variables('tags')]", "kind": "StorageV2", "sku": {"name": "Standard_LRS"},
+      "properties": {"isHnsEnabled": true, "allowBlobPublicAccess": false, "allowSharedKeyAccess": false, "defaultToOAuthAuthentication": true, "minimumTlsVersion": "TLS1_2", "supportsHttpsTrafficOnly": true, "publicNetworkAccess": "Enabled", "accessTier": "Hot"}},
+    {"type": "Microsoft.Storage/storageAccounts/blobServices/containers", "apiVersion": "2025-01-01", "name": "[concat(parameters('storageName'), '/default/proof')]", "dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]"], "properties": {"publicAccess": "None"}},
+    {"type": "Microsoft.Databricks/accessConnectors", "apiVersion": "2023-05-01", "name": "[concat(parameters('prefix'), '-connector')]", "location": "[parameters('location')]", "tags": "[variables('tags')]", "identity": {"type": "SystemAssigned"}, "properties": {}},
+    {"type": "Microsoft.Authorization/roleAssignments", "apiVersion": "2022-04-01", "name": "[guid(resourceId('Microsoft.Databricks/accessConnectors', concat(parameters('prefix'), '-connector')), 'fft-reader-self')]", "scope": "[concat('Microsoft.Databricks/accessConnectors/', parameters('prefix'), '-connector')]",
+      "dependsOn": ["[resourceId('Microsoft.Databricks/accessConnectors', concat(parameters('prefix'), '-connector'))]"],
+      "properties": {"roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]", "principalId": "[reference(resourceId('Microsoft.Databricks/accessConnectors', concat(parameters('prefix'), '-connector')), '2023-05-01', 'Full').identity.principalId]", "principalType": "ServicePrincipal"}},
+    {"type": "Microsoft.Authorization/roleAssignments", "apiVersion": "2022-04-01", "name": "[guid(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), 'fft-storage')]", "scope": "[concat('Microsoft.Storage/storageAccounts/', parameters('storageName'))]",
+      "dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]", "[resourceId('Microsoft.Databricks/accessConnectors', concat(parameters('prefix'), '-connector'))]"],
+      "properties": {"roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')]", "principalId": "[reference(resourceId('Microsoft.Databricks/accessConnectors', concat(parameters('prefix'), '-connector')), '2023-05-01', 'Full').identity.principalId]", "principalType": "ServicePrincipal"}},
+    {"type": "Microsoft.Databricks/workspaces", "apiVersion": "2024-05-01", "name": "[concat(parameters('prefix'), '-dbw')]", "location": "[parameters('location')]", "tags": "[variables('tags')]", "sku": {"name": "premium"},
+      "properties": {"managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', concat(parameters('prefix'), '-dbw-managed'))]", "publicNetworkAccess": "Enabled", "parameters": {"enableNoPublicIp": {"value": true}, "storageAccountSkuName": {"value": "Standard_LRS"}}}},
+    {"type": "Microsoft.Search/searchServices", "apiVersion": "2025-05-01", "name": "[concat(parameters('prefix'), '-search')]", "location": "[parameters('location')]", "tags": "[variables('tags')]", "sku": {"name": "free"},
+      "properties": {"replicaCount": 1, "partitionCount": 1, "hostingMode": "default", "disableLocalAuth": true, "publicNetworkAccess": "enabled"}},
+    {"type": "Microsoft.CognitiveServices/accounts", "apiVersion": "2025-06-01", "name": "[concat(parameters('prefix'), '-ai')]", "location": "[parameters('location')]", "tags": "[variables('tags')]", "kind": "AIServices", "sku": {"name": "S0"}, "identity": {"type": "SystemAssigned"},
+      "properties": {"customSubDomainName": "[concat(parameters('prefix'), '-ai')]", "allowProjectManagement": true, "disableLocalAuth": true, "publicNetworkAccess": "Enabled"}},
+    {"type": "Microsoft.CognitiveServices/accounts/projects", "apiVersion": "2025-06-01", "name": "[concat(parameters('prefix'), '-ai/proof')]", "location": "[parameters('location')]", "identity": {"type": "SystemAssigned"},
+      "dependsOn": ["[resourceId('Microsoft.CognitiveServices/accounts', concat(parameters('prefix'), '-ai'))]"], "properties": {"displayName": "Fleet Fault Triage", "description": "Educational recorded-fault investigation proof"}},
+    {"type": "Microsoft.CognitiveServices/accounts/deployments", "apiVersion": "2025-06-01", "name": "[concat(parameters('prefix'), '-ai/investigator')]", "dependsOn": ["[resourceId('Microsoft.CognitiveServices/accounts', concat(parameters('prefix'), '-ai'))]", "[resourceId('Microsoft.CognitiveServices/accounts/projects', concat(parameters('prefix'), '-ai'), 'proof')]"],
+      "sku": {"name": "[parameters('modelDeploymentSku')]", "capacity": "[parameters('generationCapacity')]"},
+      "properties": {"model": {"format": "OpenAI", "name": "[parameters('generationModel')]", "version": "[parameters('generationVersion')]"}, "versionUpgradeOption": "NoAutoUpgrade"}},
+    {"type": "Microsoft.CognitiveServices/accounts/deployments", "apiVersion": "2025-06-01", "name": "[concat(parameters('prefix'), '-ai/embedding')]", "dependsOn": ["[resourceId('Microsoft.CognitiveServices/accounts', concat(parameters('prefix'), '-ai'))]", "[resourceId('Microsoft.CognitiveServices/accounts/deployments', concat(parameters('prefix'), '-ai'), 'investigator')]"],
+      "sku": {"name": "[parameters('modelDeploymentSku')]", "capacity": "[parameters('embeddingCapacity')]"},
+      "properties": {"model": {"format": "OpenAI", "name": "[parameters('embeddingModel')]", "version": "[parameters('embeddingVersion')]"}, "versionUpgradeOption": "NoAutoUpgrade"}}
+  ],
+  "outputs": {
+    "accessConnectorId": {"type": "string", "value": "[resourceId('Microsoft.Databricks/accessConnectors', concat(parameters('prefix'), '-connector'))]"},
+    "storageRoot": {"type": "string", "value": "[concat('abfss://proof@', parameters('storageName'), '.dfs.core.windows.net/')]"},
+    "workspaceResourceId": {"type": "string", "value": "[resourceId('Microsoft.Databricks/workspaces', concat(parameters('prefix'), '-dbw'))]"},
+    "managedResourceGroupName": {"type": "string", "value": "[concat(parameters('prefix'), '-dbw-managed')]"},
+    "foundryProjectEndpoint": {"type": "string", "value": "[concat('https://', parameters('prefix'), '-ai.services.ai.azure.com/api/projects/proof')]"},
+    "searchEndpoint": {"type": "string", "value": "[concat('https://', parameters('prefix'), '-search.search.windows.net')]"}
+  }
+}

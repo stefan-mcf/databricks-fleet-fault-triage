@@ -1,0 +1,8 @@
+{
+  "project": "fleet-fault-triage", "approved": false, "synthetic": false,
+  "source": null, "approved_utc": null, "expires_utc": null,
+  "currency": "AUD", "budget_aud": null, "cleanup_reserve_aud": null,
+  "config_sha256": null,
+  "actions": [],
+  "note": "Template only. Actual owner approval must identify account, configuration, actions and budget. Never infer approval from this file."
+}
